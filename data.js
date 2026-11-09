@@ -19,6 +19,22 @@ window.SITE = {
   },
   {
    "src": "seleccion-02.jpg",
+   "w": 1500,
+   "h": 2000,
+   "date": "2026-11-02",
+   "place": "",
+   "file": "DSC08174"
+  },
+  {
+   "src": "seleccion-03.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-04-20",
+   "place": "",
+   "file": "DSC04990"
+  },
+  {
+   "src": "seleccion-04.jpg",
    "w": 2000,
    "h": 1500,
    "date": "2024-04-19",
@@ -26,12 +42,12 @@ window.SITE = {
    "file": "DSC04531"
   },
   {
-   "src": "tendidos-10.jpg",
+   "src": "seleccion-05.jpg",
    "w": 2000,
-   "h": 1333,
-   "date": "2024-01-27",
+   "h": 2000,
+   "date": "2024-12-28",
    "place": "",
-   "file": "DSC03800"
+   "file": "DSC06466"
   },
   {
    "src": "picnic-09.jpg",
@@ -42,71 +58,15 @@ window.SITE = {
    "file": "DSC08363"
   },
   {
-   "src": "lago-10.jpg",
-   "w": 2000,
-   "h": 1125,
-   "date": "2024-04-20",
-   "place": "",
-   "file": "DSC04990"
-  },
-  {
-   "src": "seleccion-06.jpg",
-   "w": 2000,
-   "h": 1125,
-   "date": "2024-09-28",
-   "place": "",
-   "file": "DSC06067"
-  },
-  {
    "src": "seleccion-07.jpg",
    "w": 2000,
-   "h": 1333,
-   "date": "2024-01-27",
+   "h": 1600,
+   "date": "2024-07-30",
    "place": "",
-   "file": "DSC03878_2"
+   "file": "DSC05517"
   },
   {
-   "src": "otono-11.jpg",
-   "w": 1500,
-   "h": 2000,
-   "date": "2026-11-02",
-   "place": "",
-   "file": "DSC08174"
-  },
-  {
-   "src": "seleccion-09.jpg",
-   "w": 2000,
-   "h": 1125,
-   "date": "2024-08-01",
-   "place": "",
-   "file": "DSC05884"
-  },
-  {
-   "src": "seleccion-10.jpg",
-   "w": 2000,
-   "h": 1125,
-   "date": "2024-04-20",
-   "place": "",
-   "file": "DSC04991"
-  },
-  {
-   "src": "seleccion-11.jpg",
-   "w": 2000,
-   "h": 2000,
-   "date": "2024-12-28",
-   "place": "",
-   "file": "DSC06466"
-  },
-  {
-   "src": "seleccion-12.jpg",
-   "w": 1333,
-   "h": 2000,
-   "date": "2023-08-16",
-   "place": "",
-   "file": "_DSC3003"
-  },
-  {
-   "src": "seleccion-13.jpg",
+   "src": "seleccion-08.jpg",
    "w": 1500,
    "h": 2000,
    "date": "2026-11-02",
@@ -114,7 +74,111 @@ window.SITE = {
    "file": "DSC08144"
   },
   {
-   "src": "otono-04.jpg",
+   "src": "seleccion-09.jpg",
+   "w": 2000,
+   "h": 1333,
+   "date": "2024-01-27",
+   "place": "",
+   "file": "DSC03878_2"
+  },
+  {
+   "src": "picnic-07.jpg",
+   "w": 2000,
+   "h": 1600,
+   "date": "2026-11-08",
+   "place": "",
+   "file": "DSC08346"
+  },
+  {
+   "src": "seleccion-11.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-08-01",
+   "place": "",
+   "file": "DSC05884"
+  },
+  {
+   "src": "seleccion-12.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-04-20",
+   "place": "",
+   "file": "DSC04991"
+  },
+  {
+   "src": "seleccion-13.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-09-28",
+   "place": "",
+   "file": "DSC06067"
+  },
+  {
+   "src": "tendidos-10.jpg",
+   "w": 2000,
+   "h": 1333,
+   "date": "2024-01-27",
+   "place": "",
+   "file": "DSC03800"
+  },
+  {
+   "src": "seleccion-15.jpg",
+   "w": 2000,
+   "h": 1500,
+   "date": "2024-04-19",
+   "place": "",
+   "file": "DSC04560"
+  },
+  {
+   "src": "picnic-12.jpg",
+   "w": 2000,
+   "h": 1600,
+   "date": "2026-11-08",
+   "place": "",
+   "file": "DSC08415"
+  },
+  {
+   "src": "seleccion-17.jpg",
+   "w": 1333,
+   "h": 2000,
+   "date": "2023-08-16",
+   "place": "",
+   "file": "_DSC3003"
+  },
+  {
+   "src": "seleccion-18.jpg",
+   "w": 1125,
+   "h": 2000,
+   "date": "2026-10-22",
+   "place": "",
+   "file": "DSC07824"
+  },
+  {
+   "src": "seleccion-19.jpg",
+   "w": 1125,
+   "h": 2000,
+   "date": "2025-10-18",
+   "place": "",
+   "file": "SegoviaGlobo-17"
+  },
+  {
+   "src": "picnic-10.jpg",
+   "w": 1600,
+   "h": 2000,
+   "date": "2026-11-08",
+   "place": "",
+   "file": "DSC08400"
+  },
+  {
+   "src": "seleccion-21.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-08-01",
+   "place": "",
+   "file": "DSC05743"
+  },
+  {
+   "src": "seleccion-22.jpg",
    "w": 2000,
    "h": 1125,
    "date": "2026-10-15",
@@ -122,7 +186,23 @@ window.SITE = {
    "file": "DSC07732"
   },
   {
-   "src": "seleccion-15.jpg",
+   "src": "seleccion-23.jpg",
+   "w": 1500,
+   "h": 2000,
+   "date": "2024-04-20",
+   "place": "",
+   "file": "DSC04880"
+  },
+  {
+   "src": "tendidos-01.jpg",
+   "w": 1333,
+   "h": 2000,
+   "date": "2024-01-27",
+   "place": "",
+   "file": "DSC03884"
+  },
+  {
+   "src": "seleccion-25.jpg",
    "w": 2000,
    "h": 1600,
    "date": "2025-04-16",
@@ -376,222 +456,6 @@ window.SITE = {
      "date": "2024-01-27",
      "place": "",
      "file": "DSC03754"
-    }
-   ]
-  },
-  {
-   "id": "otono",
-   "title": "Otoño",
-   "mode": "Blanco y negro",
-   "intro": "Luz dura de mediodía hasta la noche en el parque. Otoño de 2026.",
-   "items": [
-    {
-     "src": "otono-01.jpg",
-     "w": 2000,
-     "h": 1600,
-     "date": "2026-10-08",
-     "place": "",
-     "file": "DSC07619"
-    },
-    {
-     "src": "otono-02.jpg",
-     "w": 2000,
-     "h": 1600,
-     "date": "2026-10-08",
-     "place": "",
-     "file": "DSC07645"
-    },
-    {
-     "src": "otono-03.jpg",
-     "w": 2000,
-     "h": 1600,
-     "date": "2026-10-10",
-     "place": "",
-     "file": "DSC07684"
-    },
-    {
-     "src": "otono-04.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2026-10-15",
-     "place": "",
-     "file": "DSC07732"
-    },
-    {
-     "src": "otono-05.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2026-10-22",
-     "place": "",
-     "file": "DSC07815"
-    },
-    {
-     "src": "otono-06.jpg",
-     "w": 2000,
-     "h": 1500,
-     "date": "2026-10-22",
-     "place": "",
-     "file": "DSC07823"
-    },
-    {
-     "src": "otono-07.jpg",
-     "w": 1125,
-     "h": 2000,
-     "date": "2026-10-22",
-     "place": "",
-     "file": "DSC07824"
-    },
-    {
-     "src": "otono-08.jpg",
-     "w": 1500,
-     "h": 2000,
-     "date": "2026-10-22",
-     "place": "",
-     "file": "DSC07831"
-    },
-    {
-     "src": "otono-09.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08149"
-    },
-    {
-     "src": "otono-10.jpg",
-     "w": 1125,
-     "h": 2000,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08172"
-    },
-    {
-     "src": "otono-11.jpg",
-     "w": 1500,
-     "h": 2000,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08174"
-    },
-    {
-     "src": "otono-12.jpg",
-     "w": 1125,
-     "h": 2000,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08199"
-    },
-    {
-     "src": "otono-13.jpg",
-     "w": 2000,
-     "h": 1500,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08249"
-    },
-    {
-     "src": "otono-14.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2026-11-02",
-     "place": "",
-     "file": "DSC08241"
-    }
-   ]
-  },
-  {
-   "id": "lago",
-   "title": "Lago",
-   "mode": "Color",
-   "intro": "Un solo día junto al agua, de las dos y media de la tarde a las ocho y cuarto.",
-   "items": [
-    {
-     "src": "lago-01.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04788"
-    },
-    {
-     "src": "lago-02.jpg",
-     "w": 1500,
-     "h": 2000,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04795"
-    },
-    {
-     "src": "lago-03.jpg",
-     "w": 1734,
-     "h": 1300,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04804"
-    },
-    {
-     "src": "lago-04.jpg",
-     "w": 1500,
-     "h": 2000,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04831"
-    },
-    {
-     "src": "lago-05.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04857"
-    },
-    {
-     "src": "lago-06.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04870-2"
-    },
-    {
-     "src": "lago-07.jpg",
-     "w": 1125,
-     "h": 2000,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04932"
-    },
-    {
-     "src": "lago-08.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04944"
-    },
-    {
-     "src": "lago-09.jpg",
-     "w": 1333,
-     "h": 2000,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04989"
-    },
-    {
-     "src": "lago-10.jpg",
-     "w": 2000,
-     "h": 1125,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04990"
-    },
-    {
-     "src": "lago-11.jpg",
-     "w": 2000,
-     "h": 1500,
-     "date": "2024-04-20",
-     "place": "",
-     "file": "DSC04993"
     }
    ]
   }
