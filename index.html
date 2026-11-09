@@ -30,174 +30,154 @@
   :root{--bg:#f3f2ee;--ink:#1b1b1a;--mute:#8d8b85;--pad:clamp(20px,3.2vw,48px);
         --display:"Archivo Black","Arial Black",Impact,sans-serif;--sans:"Archivo",system-ui,-apple-system,Helvetica,Arial,sans-serif}
   *{box-sizing:border-box;margin:0;padding:0}
-  html{background:var(--bg);color:var(--ink);scroll-behavior:smooth}
-  body{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  html{background:var(--bg);color:var(--ink)}
+  body{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+  body.full{height:100vh;height:100dvh;overflow:hidden}
   a{color:inherit;text-decoration:none}
   img{display:block;user-select:none;-webkit-user-drag:none}
   button{all:unset;cursor:pointer}
+  main{flex:1;min-height:0;display:flex;flex-direction:column}
 
-  /* Cabecera: nombre a la izquierda, series a la derecha. No flota sobre las fotos. */
-  header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:var(--pad);flex-wrap:wrap}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:var(--pad)}
   .name{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  nav{display:flex;gap:clamp(14px,2vw,28px);flex-wrap:wrap}
+  nav{display:flex;gap:clamp(14px,2vw,28px)}
   nav a{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
   nav a:hover,nav a.on{color:var(--ink)}
 
-  /* Columna de fotos: grandes, una debajo de otra, con aire entre ellas */
-  .feed{display:flex;flex-direction:column;align-items:center;gap:clamp(64px,14vh,160px);padding:clamp(24px,6vh,72px) var(--pad) 0}
-  .feed figure{width:100%;display:flex;flex-direction:column;align-items:center}
-  .feed img{max-width:min(100%,1400px);max-height:86vh;width:auto;height:auto;object-fit:contain;cursor:zoom-in;background:#e7e5df}
-  .feed figcaption{margin-top:12px;color:var(--mute);font-size:12px;text-align:center}
-  .feed figcaption a:hover{color:var(--ink)}
+  /* Carrusel: una foto cada vez, cambia sola o con el dedo, las flechas o un clic */
+  .car{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 var(--pad)}
+  .stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+  .stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:opacity .45s ease}
+  .stage img.out{opacity:0}
+  .stage .hit{position:absolute;top:0;bottom:0;width:50%;z-index:2}
+  .stage .prev{left:0;cursor:w-resize}.stage .next{right:0;cursor:e-resize}
+  .ctl{display:flex;justify-content:center;align-items:center;gap:18px;padding:14px 0 0;color:var(--mute);font-size:12px;font-variant-numeric:tabular-nums}
+  .ctl button{font-size:18px;line-height:1;padding:4px 8px;color:var(--mute)}
+  .ctl button:hover{color:var(--ink)}
+  .cap{min-height:18px;text-align:center;color:var(--mute);font-size:12px;padding-top:4px}
 
-  .intro{padding:clamp(24px,8vh,96px) var(--pad) 0;text-align:center}
-  .intro h1{font-family:var(--display);font-size:clamp(36px,6vw,84px);line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
-  .intro p{max-width:46ch;margin:18px auto 0;font-size:15px;color:var(--mute)}
+  .sinfo{padding:0 var(--pad) clamp(14px,2.5vh,28px);display:flex;gap:8px 28px;align-items:baseline;flex-wrap:wrap}
+  .sinfo h1{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,40px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+  .sinfo p{color:var(--mute);font-size:14px;max-width:60ch}
+  .sinfo a{color:var(--mute);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
+  .sinfo a:hover{color:var(--ink)}
 
-  .next{padding:clamp(80px,16vh,180px) var(--pad) 0;text-align:center}
-  .next a{font-family:var(--display);font-size:clamp(28px,4vw,52px);text-transform:uppercase;letter-spacing:-.02em}
-  .next a:hover{color:var(--mute)}
-  .next span{display:block;color:var(--mute);margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
+  /* Proyectos */
+  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,56px);padding:clamp(16px,4vh,48px) var(--pad) 0}
+  .projects a{display:block}
+  .projects .cov{aspect-ratio:4/3;background:#e7e5df center/cover no-repeat;transition:opacity .2s}
+  .projects a:hover .cov{opacity:.85}
+  .projects h2{font-family:var(--display);font-weight:400;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em;text-transform:uppercase;margin-top:14px;line-height:1.05}
+  .projects p{color:var(--mute);font-size:12px;margin-top:4px}
 
-  footer{display:flex;justify-content:space-between;padding:clamp(80px,14vh,160px) var(--pad) var(--pad);color:var(--mute);font-size:12px}
-
-  .info{max-width:620px;margin:0 auto;padding:clamp(40px,12vh,140px) var(--pad) 0}
+  .info{max-width:620px;width:100%;margin:0 auto;padding:clamp(24px,10vh,120px) var(--pad) 0}
   .info p{font-size:clamp(18px,1.8vw,22px);line-height:1.5;margin-bottom:1em}
   .info dl{margin-top:48px;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:14px}
   .info dt{color:var(--mute)}
   .info dd a{border-bottom:1px solid currentColor}
 
-  /* Visor a pantalla completa */
-  .lb{position:fixed;inset:0;z-index:20;background:var(--bg);display:none;grid-template-rows:auto 1fr auto}
-  .lb.on{display:grid}
-  .lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px var(--pad);font-size:12px}
-  .lb-top em{font-family:var(--display);font-style:normal;text-transform:uppercase;font-size:14px}
-  .lb-stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 var(--pad)}
-  .lb-stage img{max-width:100%;max-height:100%;object-fit:contain}
-  .lb .hit{position:absolute;top:0;bottom:0;width:50%;z-index:2}
-  .lb .hit.prev{left:0;cursor:w-resize}.lb .hit.next{right:0;cursor:e-resize}
-  .lb button{color:var(--mute)} .lb button:hover{color:var(--ink)}
-  .lb .ctl{display:flex;gap:20px}
-  .lb .count{font-variant-numeric:tabular-nums}
+  footer{display:flex;justify-content:space-between;align-items:center;padding:clamp(16px,3vh,28px) var(--pad);color:var(--mute);font-size:12px}
+  body:not(.full) footer{margin-top:clamp(60px,12vh,140px)}
+  footer .ig{display:block;width:22px;height:22px;color:var(--ink)}
+  footer .ig:hover{opacity:.6}
 
   @media (max-width:640px){
-    header{flex-direction:column;align-items:flex-start;gap:14px}
-    .feed{gap:56px;padding-left:0;padding-right:0}
-    .feed img{max-height:none;width:100%}
-    .feed figcaption{padding:0 var(--pad)}
+    .car{padding:0}
+    .name{font-size:20px;white-space:nowrap}
+    nav{gap:14px}
+    .ctl,.cap{padding-left:var(--pad);padding-right:var(--pad)}
   }
+  @media (prefers-reduced-motion:reduce){.stage img{transition:none}}
 </style>
 </head>
 <body>
 <header>
   <a class="name" href="#" id="site-name"></a>
-  <nav id="nav"></nav>
+  <nav><a href="#proyectos" data-id="proyectos">Proyectos</a><a href="#info" data-id="info">Info</a></nav>
 </header>
 <main id="main"></main>
-<footer><span id="foot-name"></span><span id="foot-year"></span></footer>
-
-<div class="lb" id="lb" aria-modal="true" role="dialog">
-  <div class="lb-top"><em id="lb-title"></em><button id="lb-close">Cerrar</button></div>
-  <div class="lb-stage">
-    <img id="lb-img" alt="">
-    <a class="hit prev" id="lb-prev" aria-label="Anterior"></a>
-    <a class="hit next" id="lb-next" aria-label="Siguiente"></a>
-  </div>
-  <div class="lb-bot"><span id="lb-cap" style="color:var(--mute)"></span>
-    <div class="ctl"><button id="b-prev">Anterior</button><span class="count" id="lb-count"></span><button id="b-next">Siguiente</button><button id="b-share">Compartir</button></div>
-  </div>
-</div>
+<footer><span id="foot"></span><span id="ig"></span></footer>
 
 <script src="data.js"></script>
 <script>
 (() => {
   const S = window.SITE, $ = id => document.getElementById(id);
   const byId = Object.fromEntries(S.series.map(s => [s.id, s]));
-  const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-  const fecha = iso => { if (!iso) return ""; const [y,m,d] = iso.split("-").map(Number); return d + " de " + MESES[m-1] + " de " + y; };
-  const pie = it => [it.place, fecha(it.date)].filter(Boolean).join(", ");
-  const seriesOf = file => S.series.find(s => s.items.some(i => i.file === file));
+  const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const DELAY = 6000; // milisegundos entre foto y foto
 
   $("site-name").textContent = S.name;
-  $("foot-name").textContent = S.name;
-  $("foot-year").textContent = "© " + new Date().getFullYear();
-  $("nav").innerHTML = S.series.map(s => `<a href="#${s.id}" data-id="${s.id}">${s.title}</a>`).join("") + `<a href="#info" data-id="info">Info</a>`;
+  $("foot").textContent = S.name + " © " + new Date().getFullYear();
+  const ig = (S.contact || {}).instagram;
+  if (ig) $("ig").innerHTML = `<a class="ig" href="https://instagram.com/${esc(ig)}" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg></a>`;
 
-  const img = (it, i, list) =>
-    `<img src="m/${it.src}" srcset="m/${it.src} 1200w, img/${it.src} 2000w" sizes="(max-width:640px) 100vw, 1400px"
-      width="${it.w}" height="${it.h}" loading="${i < 2 ? "eager" : "lazy"}" decoding="async" alt="" data-list="${list}" data-i="${i}">`;
+  // ---------- Carrusel ----------
+  const pick = it => (innerWidth * (devicePixelRatio || 1) > 1300 ? "img/" : "m/") + it.src;
+  let list = [], idx = 0, timer = null;
+  function carousel(items) {
+    list = items; idx = 0;
+    return `<section class="car">
+      <div class="stage" id="stage"><img id="ph" alt=""><a class="hit prev" id="h-prev" aria-label="Anterior"></a><a class="hit next" id="h-next" aria-label="Siguiente"></a></div>
+      <div class="ctl"><button id="b-prev" aria-label="Anterior">‹</button><span id="count"></span><button id="b-next" aria-label="Siguiente">›</button></div>
+      <div class="cap" id="cap"></div></section>`;
+  }
+  function show(i, fade = true) {
+    if (!list.length) return;
+    idx = (i + list.length) % list.length;
+    const it = list[idx], im = $("ph"), url = pick(it);
+    const put = () => { im.src = url; im.classList.remove("out"); };
+    if (fade && im.getAttribute("src")) { im.classList.add("out"); const pre = new Image(); pre.src = url; setTimeout(() => (pre.complete ? put() : (pre.onload = pre.onerror = put)), 450); }
+    else put();
+    $("count").textContent = (idx + 1) + " / " + list.length;
+    $("cap").textContent = it.place || "";
+    new Image().src = pick(list[(idx + 1) % list.length]);
+    restart();
+  }
+  function restart() { clearTimeout(timer); if (list.length > 1 && !document.hidden) timer = setTimeout(() => show(idx + 1), DELAY); }
+  function wire() {
+    $("h-prev").onclick = $("b-prev").onclick = () => show(idx - 1);
+    $("h-next").onclick = $("b-next").onclick = () => show(idx + 1);
+    let x0 = null;
+    $("stage").addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
+    $("stage").addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); }, { passive: true });
+    show(0, false);
+  }
+  addEventListener("keydown", e => { if (!list.length) return; if (e.key === "ArrowRight") show(idx + 1); else if (e.key === "ArrowLeft") show(idx - 1); });
+  document.addEventListener("visibilitychange", restart);
 
-  let current = null; // lista que se muestra en la página: "home" o id de serie
-
+  // ---------- Páginas ----------
   function home() {
-    current = "home";
-    $("main").innerHTML = `<section class="feed">${S.selection.map((it, i) => {
-      const s = seriesOf(it.file);
-      const cap = s ? `<a href="#${s.id}">${s.title}</a> · ${pie(it)}` : pie(it);
-      return `<figure>${img(it, i, "home")}<figcaption>${cap}</figcaption></figure>`;
-    }).join("")}</section>`;
+    document.body.classList.add("full");
+    $("main").innerHTML = carousel(S.selection); wire();
   }
-
   function series(s) {
-    current = s.id;
-    const k = S.series.indexOf(s), nx = S.series[(k + 1) % S.series.length];
-    $("main").innerHTML = `<section class="intro"><h1>${s.title}</h1><p>${s.intro}</p></section>
-      <section class="feed">${s.items.map((it, i) => `<figure>${img(it, i, s.id)}<figcaption>${pie(it)}</figcaption></figure>`).join("")}</section>
-      <section class="next"><span>Siguiente serie</span><a href="#${nx.id}">${nx.title}</a></section>`;
+    document.body.classList.add("full");
+    $("main").innerHTML = `<section class="sinfo"><h1>${esc(s.title)}</h1>${s.intro ? `<p>${esc(s.intro)}</p>` : ""}<a href="#proyectos">← Proyectos</a></section>` + carousel(s.items);
+    wire();
   }
-
+  function projects() {
+    $("main").innerHTML = `<section class="projects">${S.series.filter(s => s.items.length).map(s =>
+      `<a href="#${esc(s.id)}"><div class="cov" style="background-image:url('m/${esc(s.items[0].src)}')"></div><h2>${esc(s.title)}</h2><p>${s.items.length} fotografías</p></a>`).join("")}</section>`;
+  }
   function info() {
-    current = "info";
     const c = S.contact || {}, rows = [];
-    if (c.email) rows.push(["Correo", `<a href="mailto:${c.email}">${c.email}</a>`]);
-    if (c.instagram) rows.push(["Instagram", `<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener">@${c.instagram}</a>`]);
-    if (c.linkedin) rows.push(["LinkedIn", `<a href="${c.linkedin}" target="_blank" rel="noopener">Perfil</a>`]);
-    $("main").innerHTML = `<section class="info">
-      ${(S.about || []).map(p => `<p>${p}</p>`).join("")}
+    if (c.email) rows.push(["Correo", `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>`]);
+    if (c.instagram) rows.push(["Instagram", `<a href="https://instagram.com/${esc(c.instagram)}" target="_blank" rel="noopener">@${esc(c.instagram)}</a>`]);
+    if (c.linkedin) rows.push(["LinkedIn", `<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">Perfil</a>`]);
+    $("main").innerHTML = `<section class="info">${(S.about || []).map(p => `<p>${esc(p)}</p>`).join("")}
       <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></section>`;
   }
 
-  // Visor
-  let lbList = [], lbIdx = 0, lbKey = "";
-  const listFor = key => key === "home" ? S.selection : byId[key].items;
-  function openLb(key, i) {
-    lbKey = key; lbList = listFor(key); lbIdx = i;
-    const it = lbList[i], s = key === "home" ? seriesOf(it.file) : byId[key];
-    $("lb-img").src = "img/" + it.src;
-    $("lb-title").textContent = key === "home" ? "Selección" : s.title;
-    $("lb-cap").textContent = (key === "home" && s ? s.title + " · " : "") + pie(it);
-    $("lb-count").textContent = (i + 1) + " / " + lbList.length;
-    $("lb").classList.add("on"); document.body.style.overflow = "hidden";
-    [i + 1, i - 1].forEach(j => { const n = lbList[(j + lbList.length) % lbList.length]; new Image().src = "img/" + n.src; });
-  }
-  function closeLb() { $("lb").classList.remove("on"); document.body.style.overflow = ""; }
-  const step = d => openLb(lbKey, (lbIdx + d + lbList.length) % lbList.length);
-  $("main").addEventListener("click", e => { const t = e.target.closest("img[data-list]"); if (t) openLb(t.dataset.list, +t.dataset.i); });
-  $("lb-prev").onclick = $("b-prev").onclick = () => step(-1);
-  $("lb-next").onclick = $("b-next").onclick = () => step(1);
-  $("lb-close").onclick = closeLb;
-  addEventListener("keydown", e => {
-    if (!$("lb").classList.contains("on")) return;
-    if (e.key === "ArrowRight") step(1); else if (e.key === "ArrowLeft") step(-1); else if (e.key === "Escape") closeLb();
-  });
-  let x0 = null;
-  $("lb").addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
-  $("lb").addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 45) step(dx < 0 ? 1 : -1); });
-  // Compartir: en el móvil abre el menú del sistema; en ordenador copia el enlace a la serie
-  $("b-share").onclick = async () => {
-    const base = location.href.split("#")[0], url = lbKey === "home" ? base : base + "#" + lbKey;
-    try { if (navigator.share) { await navigator.share({ title: S.name, url }); return; } } catch (e) { return; }
-    try { await navigator.clipboard.writeText(url); $("b-share").textContent = "Enlace copiado"; } catch (e) { $("b-share").textContent = url; }
-    setTimeout(() => $("b-share").textContent = "Compartir", 2500);
-  };
-
   function route() {
-    closeLb();
-    const h = decodeURIComponent(location.hash.slice(1)).replace(/-\d+$/, "");
-    if (byId[h]) { series(byId[h]); document.title = byId[h].title + " — " + S.name; }
+    clearTimeout(timer); list = []; document.body.classList.remove("full");
+    const h = decodeURIComponent(location.hash.slice(1));
+    let nav = h;
+    if (byId[h]) { series(byId[h]); document.title = byId[h].title + " — " + S.name; nav = "proyectos"; }
+    else if (h === "proyectos") { projects(); document.title = "Proyectos — " + S.name; }
     else if (h === "info") { info(); document.title = "Info — " + S.name; }
     else { home(); document.title = S.name + " — Fotografía"; }
-    document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.id === h));
+    document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.id === nav));
     scrollTo(0, 0);
   }
   addEventListener("hashchange", route);

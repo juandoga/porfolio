@@ -266,14 +266,13 @@ function renderList() {
       <button id="s-down" ${k === S.series.length - 1 ? "disabled" : ""}>Bajar en el menú</button>
       <button class="danger" id="s-del">Borrar serie</button>
     </p>` : `<h2>Portada</h2><p class="hint">Las fotos que se ven al entrar en la web, en este orden.</p>`) + `
-    <p class="hint">Arrastra las fotos para cambiar el orden (en el móvil, usa las flechas). El lugar y la fecha salen en el pie de foto.</p>
+    <p class="hint">Arrastra las fotos para cambiar el orden (en el móvil, usa las flechas). Si escribes el lugar, sale debajo de la foto.</p>
     <p class="row"><button id="add-new">Subir fotos nuevas</button><button id="add-old">Añadir fotos que ya están en la web</button>
       <input type="file" id="file" accept="image/*" multiple hidden></p>
     <div class="grid" id="grid">${list.map((it, i) => `
       <div class="card" draggable="true" data-i="${i}">
         <div class="im" style="background-image:url('${thumb(it)}'), url('${RAW}thumb/${it.src}')"><span class="n">${i + 1}</span>${pending.has(it.src) && !pending.get(it.src).saved ? '<span class="new">Nueva</span>' : ""}</div>
         <input type="text" data-f="place" value="${esc(it.place)}" placeholder="Lugar">
-        <input type="date" data-f="date" value="${esc(it.date)}">
         <div class="ctl"><span><button class="lnk" data-a="first" title="Al principio">⇤</button><button class="lnk" data-a="l" title="Antes">←</button><button class="lnk" data-a="r" title="Después">→</button><button class="lnk" data-a="last" title="Al final">⇥</button></span><button class="lnk" data-a="x" title="Quitar">Quitar</button></div>
         <div class="file" title="${esc(it.file)}">${esc(it.file)}</div>
       </div>`).join("")}</div>
