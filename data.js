@@ -1,12 +1,14 @@
-// Porfolio. Aquí cambias nombre, contacto, la selección de la portada, series, textos y orden.
-// contact: email, instagram (usuario sin @) y linkedin (URL completa). Si un campo está vacío, no se muestra.
-// En cada foto, 'place' está vacío: escribe el lugar (p. ej. "Lisboa") y aparecerá en el pie de foto.
+// Datos del porfolio. Lo más cómodo es editarlos desde la página de gestión: /porfolio/admin/
 window.SITE = {
  "name": "Juan Domenech",
+ "about": [
+  "Fotografía de calle en blanco y negro y en color, hecha con una Sony entre 2023 y 2026.",
+  "Vive y trabaja en Madrid."
+ ],
  "contact": {
-  "email": "",
-  "instagram": "",
-  "linkedin": ""
+  "email": "juan.domenech11@gmail.com",
+  "instagram": "jota.domenech",
+  "linkedin": "https://www.linkedin.com/in/jdomenechga/"
  },
  "selection": [
   {
@@ -272,14 +274,6 @@ window.SITE = {
    "date": "2026-10-08",
    "place": "",
    "file": "DSC07640"
-  },
-  {
-   "src": "seleccion-34.jpg",
-   "w": 2000,
-   "h": 1600,
-   "date": "2026-11-08",
-   "place": "",
-   "file": "DSC08366"
   },
   {
    "src": "seleccion-35.jpg",

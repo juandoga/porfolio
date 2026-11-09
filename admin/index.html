@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Gestión — Porfolio</title>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:"Archivo Black";src:url(../fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Archivo;src:url(../fonts/archivo-latin-400-normal.woff2) format("woff2");font-weight:400}
+@font-face{font-family:Archivo;src:url(../fonts/archivo-latin-600-normal.woff2) format("woff2");font-weight:600}
+:root{--bg:#f3f2ee;--ink:#1b1b1a;--mute:#8d8b85;--line:#dcdad3;--card:#fbfaf7;--ok:#2f6b3a;--bad:#a3322a}
+*{box-sizing:border-box}
+header a{color:inherit;text-decoration:none}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 Archivo,system-ui,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer;border:1px solid var(--ink);background:none;padding:.45em .9em;border-radius:2px}
+button.pri{background:var(--ink);color:var(--bg)}
+button.pri:disabled{opacity:.35;cursor:default}
+button.lnk{border:0;padding:.2em .3em;color:var(--mute)}
+button.lnk:hover{color:var(--ink)}
+button.danger{border-color:var(--bad);color:var(--bad)}
+input[type=text],input[type=date],input[type=password],textarea{width:100%;border:1px solid var(--line);background:#fff;padding:.5em .6em;border-radius:2px}
+textarea{min-height:5em;resize:vertical}
+label{display:block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin:1em 0 .3em;font-weight:600}
+h1,h2{font-family:"Archivo Black",sans-serif;text-transform:uppercase;font-weight:400;margin:0}
+h1{font-size:18px}
+h2{font-size:22px;margin-bottom:.6em}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:1em;align-items:center;padding:14px 24px;flex-wrap:wrap}
+header .sp{flex:1}
+#status{color:var(--mute);font-size:13px}
+#status.ok{color:var(--ok)} #status.bad{color:var(--bad)}
+.wrap{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 60px)}
+nav{border-right:1px solid var(--line);padding:18px 0}
+nav a{display:block;padding:.45em 24px;color:var(--ink);text-decoration:none;cursor:pointer}
+nav a.on{background:var(--ink);color:var(--bg)}
+nav a small{color:var(--mute);margin-left:.4em}
+nav a.on small{color:#bbb}
+nav .sep{height:1px;background:var(--line);margin:10px 24px}
+main{padding:24px 28px 80px;max-width:1300px}
+.row{display:flex;gap:.6em;flex-wrap:wrap;align-items:center}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;max-width:900px}
+.fields .full{grid-column:1/-1}
+.hint{color:var(--mute);font-size:13px;margin:.4em 0 1em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px;margin-top:18px}
+.card{background:var(--card);border:1px solid var(--line);padding:8px;position:relative}
+.card.drag{opacity:.35}
+.card.over{outline:2px solid var(--ink)}
+.card .im{aspect-ratio:1;background:#e7e5df center/contain no-repeat;cursor:grab;position:relative}
+.card .n{position:absolute;top:4px;left:4px;background:var(--ink);color:var(--bg);font-size:11px;padding:1px 6px}
+.card .new{position:absolute;top:4px;right:4px;background:#e0b23c;color:#000;font-size:11px;padding:1px 6px}
+.card input{font-size:12px;padding:.3em .4em;margin-top:5px}
+.card .ctl{display:flex;justify-content:space-between;margin-top:4px}
+.card .file{font-size:11px;color:var(--mute);margin-top:4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.drop{border:1px dashed var(--mute);padding:18px;text-align:center;color:var(--mute);margin-top:14px}
+.drop.over{border-color:var(--ink);color:var(--ink)}
+#login{max-width:560px;margin:60px auto;padding:0 24px}
+#login ol{padding-left:1.2em} #login li{margin:.4em 0}
+dialog{border:1px solid var(--ink);max-width:900px;width:92vw;background:var(--bg);padding:20px}
+dialog .grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+dialog .pick{aspect-ratio:1;background:#e7e5df center/contain no-repeat;cursor:pointer;border:2px solid transparent}
+dialog .pick.sel{border-color:var(--ink)}
+@media (max-width:760px){.wrap{grid-template-columns:1fr}nav{border-right:0;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;padding:8px}nav a{padding:.4em .8em;white-space:nowrap}nav .sep{display:none}main{padding:18px}.fields{grid-template-columns:1fr}header{padding:12px 16px}}
+</style>
+</head>
+<body>
+
+<section id="login" hidden>
+  <h1>Gestión del porfolio</h1>
+  <p>Esta página solo funciona con una llave tuya de GitHub. Se guarda en este navegador y no se envía a ningún otro sitio. Hay que hacerlo una vez por navegador.</p>
+  <ol>
+    <li>Abre <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">github.com/settings/personal-access-tokens/new</a>.</li>
+    <li>Nombre: «porfolio». Caducidad: la que quieras (por ejemplo, 1 año).</li>
+    <li>En <b>Repository access</b> elige <b>Only select repositories</b> y marca <b>porfolio</b>.</li>
+    <li>En <b>Permissions → Repository permissions</b>, pon <b>Contents</b> en <b>Read and write</b>.</li>
+    <li>Pulsa <b>Generate token</b>, copia la llave y pégala aquí.</li>
+  </ol>
+  <label for="tok">Llave</label>
+  <input id="tok" type="password" placeholder="github_pat_…">
+  <p class="row" style="margin-top:1em"><button class="pri" id="tok-ok">Entrar</button><span id="tok-msg" class="hint"></span></p>
+</section>
+
+<div id="app" hidden>
+  <header>
+    <h1>Gestión</h1>
+    <span id="status"></span>
+    <span class="sp"></span>
+    <a href="../" target="_blank" rel="noopener"><button>Ver la web</button></a>
+    <button id="discard">Descartar</button>
+    <button class="pri" id="save" disabled>Guardar cambios</button>
+    <button class="lnk" id="logout" title="Borra la llave de este navegador">Salir</button>
+  </header>
+  <div class="wrap">
+    <nav id="nav"></nav>
+    <main id="main"></main>
+  </div>
+</div>
+
+<dialog id="picker">
+  <h2>Añadir fotos que ya están en la web</h2>
+  <p class="hint">Toca las que quieras y pulsa «Añadir».</p>
+  <div class="grid" id="pick-grid"></div>
+  <p class="row" style="margin-top:1em;justify-content:flex-end"><button id="pick-cancel">Cancelar</button><button class="pri" id="pick-ok">Añadir</button></p>
+</dialog>
+
+<script>
+(() => {
+const OWNER = "juandoga", REPO = "porfolio", BRANCH = "main";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+const RAW = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
+const SIZES = [["img", 2000, .82], ["m", 1200, .80], ["thumb", 600, .76]];
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+let token = localStorage.getItem("pf_token") || "";
+let S = null, original = "", view = "home";
+const pending = new Map();      // src -> {img, m, thumb, url}
+
+// ---------- GitHub ----------
+async function gh(path, opt = {}) {
+  const r = await fetch(API + path, { ...opt, headers: { Authorization: "Bearer " + token, Accept: "application/vnd.github+json", ...(opt.body ? { "Content-Type": "application/json" } : {}) } });
+  if (!r.ok) { const t = await r.text(); const e = new Error(r.status + " " + t.slice(0, 200)); e.status = r.status; throw e; }
+  return r.status === 204 ? null : r.json();
+}
+const b64ToText = b => new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\n/g, "")), c => c.charCodeAt(0)));
+const blobToB64 = blob => new Promise(res => { const f = new FileReader(); f.onload = () => res(f.result.split(",")[1]); f.readAsDataURL(blob); });
+
+async function loadData() {
+  const f = await gh(`/contents/data.js?ref=${BRANCH}&t=${Date.now()}`);
+  const txt = b64ToText(f.content);
+  S = JSON.parse(txt.slice(txt.indexOf("=") + 1).trim().replace(/;\s*$/, ""));
+  S.about ||= []; S.contact ||= {}; S.series ||= []; S.selection ||= [];
+  original = JSON.stringify(S); pending.clear();
+}
+
+function serialize() {
+  return "// Datos del porfolio. Lo más cómodo es editarlos desde la página de gestión: /porfolio/admin/\n" +
+    "window.SITE = " + JSON.stringify(S, null, 1) + ";\n";
+}
+
+async function save() {
+  status("Guardando…"); $("save").disabled = true;
+  try {
+    const used = new Set(allItems().map(i => i.src));
+    const ref = await gh(`/git/ref/heads/${BRANCH}`);
+    const head = await gh(`/git/commits/${ref.object.sha}`);
+    const tree = await gh(`/git/trees/${head.tree.sha}?recursive=1`);
+    const entries = [];
+    let k = 0, todo = [...pending.keys()].filter(s => used.has(s) && !pending.get(s).saved);
+    for (const src of todo) {
+      const p = pending.get(src);
+      for (const [dir] of SIZES) {
+        status(`Subiendo fotos ${++k} / ${todo.length * 3}…`);
+        const b = await gh("/git/blobs", { method: "POST", body: JSON.stringify({ content: await blobToB64(p[dir]), encoding: "base64" }) });
+        entries.push({ path: `${dir}/${src}`, mode: "100644", type: "blob", sha: b.sha });
+      }
+    }
+    let removed = 0;
+    for (const t of tree.tree) {
+      const m = t.type === "blob" && t.path.match(/^(img|m|thumb)\/([^/]+)$/);
+      if (m && !used.has(m[2])) { entries.push({ path: t.path, mode: "100644", type: "blob", sha: null }); removed++; }
+    }
+    entries.push({ path: "data.js", mode: "100644", type: "blob", content: serialize() });
+    status("Publicando…");
+    const nt = await gh("/git/trees", { method: "POST", body: JSON.stringify({ base_tree: head.tree.sha, tree: entries }) });
+    const msg = `Cambios desde la gestión (${todo.length} fotos nuevas, ${removed / 3 | 0} quitadas)`;
+    const c = await gh("/git/commits", { method: "POST", body: JSON.stringify({ message: msg, tree: nt.sha, parents: [head.sha] }) });
+    await gh(`/git/refs/heads/${BRANCH}`, { method: "PATCH", body: JSON.stringify({ sha: c.sha }) });
+    original = JSON.stringify(S);
+    for (const src of todo) pending.get(src).saved = true;
+    status("Guardado. La web se actualiza en uno o dos minutos.", "ok");
+  } catch (e) {
+    console.error(e);
+    status(e.status === 409 || e.status === 422 ? "No se pudo guardar: la web cambió mientras editabas. Recarga la página." : "No se pudo guardar: " + e.message, "bad");
+  }
+  dirty();
+}
+
+// ---------- Fotos nuevas ----------
+async function exifDate(file) {
+  try {
+    const v = new DataView(await file.slice(0, 256 * 1024).arrayBuffer());
+    if (v.getUint16(0) !== 0xFFD8) return "";
+    let o = 2;
+    while (o < v.byteLength - 4) {
+      const mk = v.getUint16(o), len = v.getUint16(o + 2);
+      if (mk === 0xFFE1 && v.getUint32(o + 4) === 0x45786966) {
+        const t = o + 10, le = v.getUint16(t) === 0x4949;
+        const u16 = p => v.getUint16(t + p, le), u32 = p => v.getUint32(t + p, le);
+        const find = (ifd, tag) => { const n = u16(ifd); for (let i = 0; i < n; i++) { const e = ifd + 2 + i * 12; if (u16(e) === tag) return e; } return null; };
+        const ex = find(u32(4), 0x8769); if (ex === null) return "";
+        const d = find(u32(ex + 8), 0x9003); if (d === null) return "";
+        const off = u32(d + 8); let s = ""; for (let i = 0; i < 10; i++) s += String.fromCharCode(v.getUint8(t + off + i));
+        return /^\d{4}:\d\d:\d\d$/.test(s) ? s.replace(/:/g, "-") : "";
+      }
+      o += 2 + len;
+    }
+  } catch (e) {}
+  return "";
+}
+const toBlob = (c, q) => new Promise(r => c.toBlob(r, "image/jpeg", q));
+async function processFile(file) {
+  const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+  const src = "f-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6) + ".jpg";
+  const p = {}; let W, H;
+  for (const [dir, size, q] of SIZES) {
+    const s = Math.min(1, size / Math.max(bmp.width, bmp.height));
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width * s); c.height = Math.round(bmp.height * s);
+    const g = c.getContext("2d"); g.imageSmoothingQuality = "high"; g.drawImage(bmp, 0, 0, c.width, c.height);
+    p[dir] = await toBlob(c, q);
+    if (dir === "img") { W = c.width; H = c.height; }
+  }
+  p.url = URL.createObjectURL(p.thumb);
+  pending.set(src, p);
+  return { src, w: W, h: H, date: await exifDate(file), place: "", file: file.name.replace(/\.[^.]+$/, "") };
+}
+async function addFiles(files, list) {
+  files = [...files].filter(f => /^image\//.test(f.type));
+  let i = 0;
+  for (const f of files) {
+    status(`Preparando foto ${++i} de ${files.length}…`);
+    try { list.push(await processFile(f)); } catch (e) { status("No se pudo leer " + f.name, "bad"); }
+    render();
+  }
+  status(files.length ? `${files.length} foto(s) añadidas. Recuerda guardar.` : "");
+}
+
+// ---------- Utilidades ----------
+const listOf = key => key === "home" ? S.selection : S.series.find(s => s.id === key)?.items;
+const allItems = () => [...S.selection, ...S.series.flatMap(s => s.items)];
+const thumb = it => pending.get(it.src)?.url || "../thumb/" + it.src;
+const slug = t => t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "serie";
+function status(t, cls = "") { $("status").textContent = t; $("status").className = cls; }
+function dirty() {
+  const d = JSON.stringify(S) !== original;
+  $("save").disabled = !d; $("discard").disabled = !d;
+  if (d && !$("status").textContent) status("Hay cambios sin guardar.");
+  return d;
+}
+addEventListener("beforeunload", e => { if (S && dirty()) { e.preventDefault(); e.returnValue = ""; } });
+
+// ---------- Pintar ----------
+function render() {
+  const n = S.series.map(s => `<a data-v="${esc(s.id)}">${esc(s.title)}<small>${s.items.length}</small></a>`).join("");
+  $("nav").innerHTML = `<a data-v="home">Portada<small>${S.selection.length}</small></a><div class="sep"></div>${n}
+    <a data-v="new">+ Nueva serie</a><div class="sep"></div><a data-v="info">Info y contacto</a>`;
+  $("nav").querySelectorAll("a").forEach(a => a.classList.toggle("on", a.dataset.v === view));
+  if (view === "info") return renderInfo();
+  if (!listOf(view)) view = "home";
+  renderList();
+  dirty();
+}
+
+function renderList() {
+  const s = view === "home" ? null : S.series.find(x => x.id === view), list = listOf(view), k = s ? S.series.indexOf(s) : -1;
+  $("main").innerHTML = (s ? `
+    <h2>${esc(s.title)}</h2>
+    <div class="fields">
+      <div><label>Título</label><input type="text" id="s-title" value="${esc(s.title)}"></div>
+      <div><label>Tipo</label><input type="text" id="s-mode" value="${esc(s.mode)}" placeholder="Blanco y negro / Color"></div>
+      <div class="full"><label>Texto de presentación</label><textarea id="s-intro">${esc(s.intro)}</textarea></div>
+    </div>
+    <p class="row" style="margin-top:1em">
+      <button id="s-up" ${k === 0 ? "disabled" : ""}>Subir en el menú</button>
+      <button id="s-down" ${k === S.series.length - 1 ? "disabled" : ""}>Bajar en el menú</button>
+      <button class="danger" id="s-del">Borrar serie</button>
+    </p>` : `<h2>Portada</h2><p class="hint">Las fotos que se ven al entrar en la web, en este orden.</p>`) + `
+    <p class="hint">Arrastra las fotos para cambiar el orden (en el móvil, usa las flechas). El lugar y la fecha salen en el pie de foto.</p>
+    <p class="row"><button id="add-new">Subir fotos nuevas</button><button id="add-old">Añadir fotos que ya están en la web</button>
+      <input type="file" id="file" accept="image/*" multiple hidden></p>
+    <div class="grid" id="grid">${list.map((it, i) => `
+      <div class="card" draggable="true" data-i="${i}">
+        <div class="im" style="background-image:url('${thumb(it)}'), url('${RAW}thumb/${it.src}')"><span class="n">${i + 1}</span>${pending.has(it.src) && !pending.get(it.src).saved ? '<span class="new">Nueva</span>' : ""}</div>
+        <input type="text" data-f="place" value="${esc(it.place)}" placeholder="Lugar">
+        <input type="date" data-f="date" value="${esc(it.date)}">
+        <div class="ctl"><span><button class="lnk" data-a="first" title="Al principio">⇤</button><button class="lnk" data-a="l" title="Antes">←</button><button class="lnk" data-a="r" title="Después">→</button><button class="lnk" data-a="last" title="Al final">⇥</button></span><button class="lnk" data-a="x" title="Quitar">Quitar</button></div>
+        <div class="file" title="${esc(it.file)}">${esc(it.file)}</div>
+      </div>`).join("")}</div>
+    <div class="drop" id="drop">También puedes soltar fotos aquí desde tu ordenador.</div>`;
+
+  if (s) {
+    $("s-title").oninput = e => { s.title = e.target.value; dirty(); };
+    $("s-title").onchange = render;
+    $("s-mode").oninput = e => { s.mode = e.target.value; dirty(); };
+    $("s-intro").oninput = e => { s.intro = e.target.value; dirty(); };
+    $("s-up").onclick = () => { S.series.splice(k - 1, 0, S.series.splice(k, 1)[0]); render(); };
+    $("s-down").onclick = () => { S.series.splice(k + 1, 0, S.series.splice(k, 1)[0]); render(); };
+    $("s-del").onclick = () => { if (confirm(`¿Borrar la serie «${s.title}»? Sus fotos solo se borran si no están también en la portada u otra serie.`)) { S.series.splice(k, 1); view = "home"; render(); } };
+  }
+  $("add-new").onclick = () => $("file").click();
+  $("file").onchange = e => { addFiles(e.target.files, list); e.target.value = ""; };
+  $("add-old").onclick = () => openPicker(list);
+
+  const g = $("grid");
+  g.querySelectorAll(".card").forEach(c => {
+    const i = +c.dataset.i;
+    c.querySelectorAll("input").forEach(inp => inp.oninput = () => { list[i][inp.dataset.f] = inp.value; dirty(); });
+    c.querySelectorAll("button[data-a]").forEach(b => b.onclick = () => {
+      const a = b.dataset.a, it = list.splice(i, 1)[0];
+      if (a === "x") { status(""); render(); return; }
+      const to = { first: 0, last: list.length, l: Math.max(0, i - 1), r: Math.min(list.length, i + 1) }[a];
+      list.splice(to, 0, it); render();
+    });
+    c.ondragstart = e => { e.dataTransfer.setData("text/x-i", i); c.classList.add("drag"); };
+    c.ondragend = () => c.classList.remove("drag");
+    c.ondragover = e => { if (e.dataTransfer.types.includes("text/x-i")) { e.preventDefault(); c.classList.add("over"); } };
+    c.ondragleave = () => c.classList.remove("over");
+    c.ondrop = e => {
+      e.preventDefault(); const from = +e.dataTransfer.getData("text/x-i");
+      if (isNaN(from) || from === i) return render();
+      list.splice(i, 0, list.splice(from, 1)[0]); render();
+    };
+  });
+  const d = $("drop");
+  d.ondragover = e => { if (e.dataTransfer.types.includes("Files")) { e.preventDefault(); d.classList.add("over"); } };
+  d.ondragleave = () => d.classList.remove("over");
+  d.ondrop = e => { e.preventDefault(); d.classList.remove("over"); addFiles(e.dataTransfer.files, list); };
+}
+
+function renderInfo() {
+  const c = S.contact;
+  $("main").innerHTML = `<h2>Info y contacto</h2>
+    <div class="fields">
+      <div class="full"><label>Nombre (sale arriba en la web)</label><input type="text" id="i-name" value="${esc(S.name)}"></div>
+      <div class="full"><label>Texto de la página Info (un párrafo por línea)</label><textarea id="i-about" style="min-height:8em">${esc(S.about.join("\n"))}</textarea></div>
+      <div><label>Correo</label><input type="text" id="i-email" value="${esc(c.email)}"></div>
+      <div><label>Instagram (usuario, sin @)</label><input type="text" id="i-ig" value="${esc(c.instagram)}"></div>
+      <div class="full"><label>LinkedIn (dirección completa)</label><input type="text" id="i-li" value="${esc(c.linkedin)}"></div>
+    </div><p class="hint">Si dejas un campo vacío, no aparece en la web.</p>`;
+  const bind = (id, fn) => $(id).oninput = e => { fn(e.target.value); dirty(); };
+  bind("i-name", v => S.name = v);
+  bind("i-about", v => S.about = v.split("\n").map(x => x.trim()).filter(Boolean));
+  bind("i-email", v => c.email = v.trim());
+  bind("i-ig", v => c.instagram = v.trim().replace(/^@/, ""));
+  bind("i-li", v => c.linkedin = v.trim());
+}
+
+// ---------- Selector de fotos existentes ----------
+let pickTarget = null;
+function openPicker(list) {
+  pickTarget = list;
+  const seen = new Set(list.map(i => i.src)), opts = [];
+  for (const it of allItems()) if (!seen.has(it.src)) { seen.add(it.src); opts.push(it); }
+  $("pick-grid").innerHTML = opts.length ? opts.map((it, i) => `<div class="pick" data-i="${i}" title="${esc(it.file)}" style="background-image:url('${thumb(it)}'), url('${RAW}thumb/${it.src}')"></div>`).join("")
+    : `<p class="hint">Todas las fotos de la web ya están aquí.</p>`;
+  $("pick-grid").querySelectorAll(".pick").forEach(p => p.onclick = () => p.classList.toggle("sel"));
+  $("pick-ok").onclick = () => {
+    $("pick-grid").querySelectorAll(".pick.sel").forEach(p => pickTarget.push({ ...opts[+p.dataset.i] }));
+    $("picker").close(); render();
+  };
+  $("picker").showModal();
+}
+$("pick-cancel").onclick = () => $("picker").close();
+
+// ---------- Arranque ----------
+$("nav").onclick = e => {
+  const a = e.target.closest("a"); if (!a) return;
+  if (a.dataset.v === "new") {
+    const t = prompt("Título de la nueva serie:"); if (!t) return;
+    let id = slug(t), n = 2; while (S.series.some(s => s.id === id) || ["info", "home"].includes(id)) id = slug(t) + "-" + n++;
+    S.series.push({ id, title: t.trim(), mode: "", intro: "", items: [] }); view = id;
+  } else view = a.dataset.v;
+  render(); scrollTo(0, 0);
+};
+$("save").onclick = save;
+$("discard").onclick = () => { if (confirm("¿Descartar todos los cambios sin guardar?")) { S = JSON.parse(original); render(); status(""); } };
+$("logout").onclick = () => { if (dirty() && !confirm("Hay cambios sin guardar. ¿Salir igualmente?")) return; localStorage.removeItem("pf_token"); location.reload(); };
+
+async function start() {
+  if (!token) { $("login").hidden = false; return; }
+  try {
+    await loadData();
+    $("login").hidden = true; $("app").hidden = false; render();
+  } catch (e) {
+    $("login").hidden = false; $("app").hidden = true;
+    $("tok-msg").textContent = e.status === 401 || e.status === 403 || e.status === 404 ? "La llave no vale o no tiene permiso sobre «porfolio». Revisa los pasos." : "Error: " + e.message;
+    localStorage.removeItem("pf_token"); token = "";
+  }
+}
+$("tok-ok").onclick = () => { token = $("tok").value.trim(); if (!token) return; localStorage.setItem("pf_token", token); $("tok-msg").textContent = "Comprobando…"; start(); };
+$("tok").onkeydown = e => { if (e.key === "Enter") $("tok-ok").click(); };
+start();
+})();
+</script>
+</body>
+</html>

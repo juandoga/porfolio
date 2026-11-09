@@ -153,8 +153,7 @@
     if (c.instagram) rows.push(["Instagram", `<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener">@${c.instagram}</a>`]);
     if (c.linkedin) rows.push(["LinkedIn", `<a href="${c.linkedin}" target="_blank" rel="noopener">Perfil</a>`]);
     $("main").innerHTML = `<section class="info">
-      <p>Fotografía de calle en blanco y negro y en color, hecha con una Sony entre 2023 y 2026.</p>
-      <p>Vive y trabaja en Madrid.</p>
+      ${(S.about || []).map(p => `<p>${p}</p>`).join("")}
       <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></section>`;
   }
 
