@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Juan Domenech — Fotografía</title>
-<meta name="description" content="Fotografía de calle en blanco y negro y en color. Series 2023–2026.">
+<meta name="description" content="Fotografía de calle en blanco y negro y en color.">
 <meta name="theme-color" content="#f3f2ee">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Juan Domenech">
 <meta property="og:title" content="Juan Domenech — Fotografía">
-<meta property="og:description" content="Fotografía de calle en blanco y negro y en color. Series 2023–2026.">
+<meta property="og:description" content="Fotografía de calle en blanco y negro y en color.">
 <meta property="og:url" content="https://juandoga.github.io/porfolio/">
 <meta property="og:image" content="https://juandoga.github.io/porfolio/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -19,297 +19,188 @@
 <meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Juan Domenech — Fotografía">
-<meta name="twitter:description" content="Fotografía de calle en blanco y negro y en color. Series 2023–2026.">
+<meta name="twitter:description" content="Fotografía de calle en blanco y negro y en color.">
 <meta name="twitter:image" content="https://juandoga.github.io/porfolio/og.jpg">
 <link rel="preload" href="fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
-  @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black-latin-ext-400-normal.woff2) format("woff2");font-weight:400;font-display:swap;unicode-range:U+0100-024F,U+1E00-1EFF}
-  @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+  @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-display:swap}
   @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
-  @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-600-normal.woff2) format("woff2");font-weight:600;font-display:swap}
   @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
-  :root{
-    --bg:#f3f2ee; --ink:#1b1b1a; --mute:#8a8984; --line:#dcdad3;
-    --display:"Archivo Black","Arial Black",Impact,sans-serif; --sans:"Archivo",system-ui,-apple-system,Helvetica,Arial,sans-serif;
-    --pad:clamp(18px,3vw,40px);
-  }
+
+  :root{--bg:#f3f2ee;--ink:#1b1b1a;--mute:#8d8b85;--pad:clamp(20px,3.2vw,48px);
+        --display:"Archivo Black","Arial Black",Impact,sans-serif;--sans:"Archivo",system-ui,-apple-system,Helvetica,Arial,sans-serif}
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--bg);color:var(--ink)}
-  body{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.5;letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+  html{background:var(--bg);color:var(--ink);scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  a:hover{color:var(--mute)}
   img{display:block;user-select:none;-webkit-user-drag:none}
+  button{all:unset;cursor:pointer}
 
-  header{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:baseline;
-    padding:var(--pad) var(--pad) 0;pointer-events:none}
-  header>*{pointer-events:auto}
-  .name{font-family:var(--display);font-size:34px;line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  nav{display:flex;gap:22px}
-  nav a{color:var(--mute);font-weight:800;text-transform:uppercase;letter-spacing:.04em} nav a.on,nav a:hover{color:var(--ink)}
+  /* Cabecera: nombre a la izquierda, series a la derecha. No flota sobre las fotos. */
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:var(--pad);flex-wrap:wrap}
+  .name{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
+  nav{display:flex;gap:clamp(14px,2vw,28px);flex-wrap:wrap}
+  nav a{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
+  nav a:hover,nav a.on{color:var(--ink)}
 
-  .view{display:none;min-height:100vh}
-  .view.on{display:block}
-  .fade{animation:fade .5s ease both}
-  @keyframes fade{from{opacity:0}to{opacity:1}}
+  /* Columna de fotos: grandes, una debajo de otra, con aire entre ellas */
+  .feed{display:flex;flex-direction:column;align-items:center;gap:clamp(64px,14vh,160px);padding:clamp(24px,6vh,72px) var(--pad) 0}
+  .feed figure{width:100%;display:flex;flex-direction:column;align-items:center}
+  .feed img{max-width:min(100%,1400px);max-height:86vh;width:auto;height:auto;object-fit:contain;cursor:zoom-in;background:#e7e5df}
+  .feed figcaption{margin-top:12px;color:var(--mute);font-size:12px;text-align:center}
+  .feed figcaption a:hover{color:var(--ink)}
 
-  /* Portada */
-  #home{padding:calc(var(--pad) + 60px) var(--pad) var(--pad)}
-  .cover{display:flex;justify-content:center;align-items:center;height:calc(78vh - 60px);min-height:320px}
-  .cover img{max-width:100%;max-height:100%;object-fit:contain;cursor:pointer}
-  .cover-cap{text-align:center;color:var(--mute);margin-top:12px}
-  .works{margin:16vh auto 0;max-width:1240px}
-  .works h2,.info h2{font-family:var(--display);font-weight:400;font-size:15px;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:22px}
-  .grid-series{display:grid;grid-template-columns:repeat(3,1fr);gap:56px 32px}
-  .card .ph{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
-  .card img{max-width:100%;max-height:100%;object-fit:contain;transition:opacity .3s}
-  .card:hover img{opacity:.82}
-  .card .t{font-family:var(--display);font-size:28px;line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;margin-top:14px}
-  .card .m{color:var(--mute)}
-  .card .i{color:var(--ink);opacity:.75;margin-top:6px;max-width:34ch;font-size:15px;line-height:1.4}
-  .thumbs .intro{max-width:1240px;margin:-18px auto 36px;font-size:17px;font-weight:500;color:var(--mute)}
+  .intro{padding:clamp(24px,8vh,96px) var(--pad) 0;text-align:center}
+  .intro h1{font-family:var(--display);font-size:clamp(36px,6vw,84px);line-height:.95;letter-spacing:-.03em;text-transform:uppercase}
+  .intro p{max-width:46ch;margin:18px auto 0;font-size:15px;color:var(--mute)}
 
-  /* Visor de serie */
-  #series{height:100vh;height:100dvh;display:none;grid-template-rows:1fr auto;padding:calc(var(--pad) + 52px) var(--pad) var(--pad)}
-  #series.on{display:grid}
-  .stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center}
-  .stage img{max-width:100%;max-height:100%;object-fit:contain}
-  .hit{position:absolute;top:0;bottom:0;width:50%;z-index:2}
-  .hit.prev{left:0;cursor:w-resize}.hit.next{right:0;cursor:e-resize}
-  .bar{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding-top:16px}
-  .bar .cap em{font-family:var(--display);font-style:normal;font-size:16px;text-transform:uppercase;letter-spacing:.01em}
-  .bar .cap span{color:var(--mute);margin-left:8px}
-  .bar .ctl{display:flex;gap:22px;color:var(--mute);white-space:nowrap}
-  .bar .ctl button{all:unset;cursor:pointer;color:var(--mute)}
-  .bar .ctl button:hover{color:var(--ink)}
-  .bar .count{color:var(--ink);font-variant-numeric:tabular-nums}
+  .next{padding:clamp(80px,16vh,180px) var(--pad) 0;text-align:center}
+  .next a{font-family:var(--display);font-size:clamp(28px,4vw,52px);text-transform:uppercase;letter-spacing:-.02em}
+  .next a:hover{color:var(--mute)}
+  .next span{display:block;color:var(--mute);margin-bottom:6px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;font-weight:800}
 
-  /* Índice de miniaturas */
-  .thumbs{position:fixed;inset:0;z-index:5;background:var(--bg);overflow:auto;display:none;
-    padding:calc(var(--pad) + 70px) var(--pad) var(--pad)}
-  .thumbs.on{display:block}
-  .thumbs .head{display:flex;justify-content:space-between;align-items:baseline;max-width:1240px;margin:0 auto 32px}
-  .thumbs .head em{font-family:var(--display);font-style:normal;font-size:30px;text-transform:uppercase;letter-spacing:-.02em}
-  .thumbs .head button{all:unset;cursor:pointer;color:var(--mute)}
-  .thumbs .head button:hover{color:var(--ink)}
-  .tgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:40px 28px;max-width:1240px;margin:0 auto;align-items:center}
-  .tgrid a{display:flex;align-items:center;justify-content:center;aspect-ratio:1}
-  .tgrid img{max-width:100%;max-height:100%;object-fit:contain}
-  .tgrid a:hover img{opacity:.8}
+  footer{display:flex;justify-content:space-between;padding:clamp(80px,14vh,160px) var(--pad) var(--pad);color:var(--mute);font-size:12px}
 
-  /* Info */
-  #info{padding:calc(var(--pad) + 120px) var(--pad) var(--pad)}
-  .info{max-width:560px;margin:0 auto}
-  .info p{font-size:20px;font-weight:500;line-height:1.5;margin-bottom:1em}
-  .info dl{margin-top:48px;display:grid;grid-template-columns:120px 1fr;gap:10px 16px}
+  .info{max-width:620px;margin:0 auto;padding:clamp(40px,12vh,140px) var(--pad) 0}
+  .info p{font-size:clamp(18px,1.8vw,22px);line-height:1.5;margin-bottom:1em}
+  .info dl{margin-top:48px;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:14px}
   .info dt{color:var(--mute)}
+  .info dd a{border-bottom:1px solid currentColor}
 
-  footer{padding:80px var(--pad) var(--pad);color:var(--mute);display:flex;justify-content:space-between}
+  /* Visor a pantalla completa */
+  .lb{position:fixed;inset:0;z-index:20;background:var(--bg);display:none;grid-template-rows:auto 1fr auto}
+  .lb.on{display:grid}
+  .lb-top,.lb-bot{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px var(--pad);font-size:12px}
+  .lb-top em{font-family:var(--display);font-style:normal;text-transform:uppercase;font-size:14px}
+  .lb-stage{position:relative;min-height:0;display:flex;align-items:center;justify-content:center;padding:0 var(--pad)}
+  .lb-stage img{max-width:100%;max-height:100%;object-fit:contain}
+  .lb .hit{position:absolute;top:0;bottom:0;width:50%;z-index:2}
+  .lb .hit.prev{left:0;cursor:w-resize}.lb .hit.next{right:0;cursor:e-resize}
+  .lb button{color:var(--mute)} .lb button:hover{color:var(--ink)}
+  .lb .ctl{display:flex;gap:20px}
+  .lb .count{font-variant-numeric:tabular-nums}
 
-  @media (max-width:900px){
-    .grid-series{grid-template-columns:repeat(2,1fr)}
-    .tgrid{grid-template-columns:repeat(4,1fr)}
-  }
-  @media (max-width:600px){
-    nav{gap:16px}
-    .name{font-size:24px}
-    .grid-series{grid-template-columns:1fr;gap:44px}
-    .tgrid{grid-template-columns:repeat(3,1fr);gap:22px 14px}
-    .cover{height:auto;min-height:0;margin-top:24px}
-    .works{margin-top:80px}
-    .bar{flex-direction:column;gap:6px}
-    .bar .ctl{width:100%;justify-content:space-between}
+  @media (max-width:640px){
+    header{flex-direction:column;align-items:flex-start;gap:14px}
+    .feed{gap:56px;padding-left:0;padding-right:0}
+    .feed img{max-height:none;width:100%}
+    .feed figcaption{padding:0 var(--pad)}
   }
 </style>
 </head>
 <body>
-
 <header>
   <a class="name" href="#" id="site-name"></a>
-  <nav>
-    <a href="#obra" data-nav="obra">Obra</a>
-    <a href="#info" data-nav="info">Info</a>
-  </nav>
+  <nav id="nav"></nav>
 </header>
+<main id="main"></main>
+<footer><span id="foot-name"></span><span id="foot-year"></span></footer>
 
-<main>
-  <section id="home" class="view">
-    <div class="cover"><img id="cover-img" alt=""></div>
-    <p class="cover-cap" id="cover-cap"></p>
-    <div class="works" id="obra-anchor">
-      <h2>Obra</h2>
-      <div class="grid-series" id="grid-series"></div>
-    </div>
-    <footer><span id="foot-name"></span><span>© <span id="year"></span></span></footer>
-  </section>
-
-  <section id="series" class="view">
-    <div class="stage">
-      <img id="photo" alt="">
-      <a class="hit prev" id="hit-prev" aria-label="Anterior"></a>
-      <a class="hit next" id="hit-next" aria-label="Siguiente"></a>
-    </div>
-    <div class="bar">
-      <div class="cap"><em id="s-title"></em><span id="s-year"></span></div>
-      <div class="ctl">
-        <button id="b-prev">Anterior</button>
-        <span class="count" id="s-count"></span>
-        <button id="b-next">Siguiente</button>
-        <button id="b-index">Índice</button>
-        <button id="b-share">Compartir</button>
-      </div>
-    </div>
-  </section>
-
-  <div class="thumbs" id="thumbs">
-    <div class="head"><em id="t-title"></em><button id="t-close">Cerrar</button></div>
-    <p class="intro" id="t-intro"></p>
-    <div class="tgrid" id="tgrid"></div>
+<div class="lb" id="lb" aria-modal="true" role="dialog">
+  <div class="lb-top"><em id="lb-title"></em><button id="lb-close">Cerrar</button></div>
+  <div class="lb-stage">
+    <img id="lb-img" alt="">
+    <a class="hit prev" id="lb-prev" aria-label="Anterior"></a>
+    <a class="hit next" id="lb-next" aria-label="Siguiente"></a>
   </div>
-
-  <section id="info" class="view">
-    <div class="info">
-      <h2>Info</h2>
-      <p>Fotografía de calle en blanco y negro y en color, hecha con una Sony entre 2023 y 2026.</p>
-      <p>Vive y trabaja en Madrid.</p>
-      <dl id="contact"></dl>
-    </div>
-  </section>
-</main>
+  <div class="lb-bot"><span id="lb-cap" style="color:var(--mute)"></span>
+    <div class="ctl"><button id="b-prev">Anterior</button><span class="count" id="lb-count"></span><button id="b-next">Siguiente</button><button id="b-share">Compartir</button></div>
+  </div>
+</div>
 
 <script src="data.js"></script>
 <script>
 (() => {
   const S = window.SITE, $ = id => document.getElementById(id);
   const byId = Object.fromEntries(S.series.map(s => [s.id, s]));
-  const IMG = "img/", TH = "thumb/";
-  let cur = null, idx = 0;
-
   const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
-  function fecha(iso){ if(!iso) return ""; const [y,m,d] = iso.split("-").map(Number); return d + " de " + MESES[m-1] + " de " + y; }
-  function rango(s){
-    const ds = s.items.map(i => i.date).filter(Boolean).sort(); if(!ds.length) return "";
-    const a = ds[0].split("-").map(Number), b = ds[ds.length-1].split("-").map(Number);
-    if (ds[0] === ds[ds.length-1]) return fecha(ds[0]);
-    if (a[0] === b[0] && a[1] === b[1]) return a[2] + "–" + b[2] + " de " + MESES[a[1]-1] + " de " + a[0];
-    if (a[0] === b[0]) return cap(MESES[a[1]-1]) + "–" + MESES[b[1]-1] + " de " + a[0];
-    return cap(MESES[a[1]-1]) + " de " + a[0] + " – " + MESES[b[1]-1] + " de " + b[0];
-  }
-  function cap(t){ return t.charAt(0).toUpperCase() + t.slice(1); }
-  function pie(it){ return [it.place, fecha(it.date)].filter(Boolean).join(", "); }
-
+  const fecha = iso => { if (!iso) return ""; const [y,m,d] = iso.split("-").map(Number); return d + " de " + MESES[m-1] + " de " + y; };
+  const pie = it => [it.place, fecha(it.date)].filter(Boolean).join(", ");
+  const seriesOf = file => S.series.find(s => s.items.some(i => i.file === file));
 
   $("site-name").textContent = S.name;
   $("foot-name").textContent = S.name;
-  $("year").textContent = new Date().getFullYear();
+  $("foot-year").textContent = "© " + new Date().getFullYear();
+  $("nav").innerHTML = S.series.map(s => `<a href="#${s.id}" data-id="${s.id}">${s.title}</a>`).join("") + `<a href="#info" data-id="info">Info</a>`;
 
-  // Portada
-  const hs = byId[S.home.series], hi = hs.items[S.home.index - 1];
-  $("cover-img").src = IMG + hi.src;
-  $("cover-img").onclick = () => go(hs.id + "-" + S.home.index);
-  $("cover-cap").textContent = hs.title + " · " + pie(hi);
+  const img = (it, i, list) =>
+    `<img src="m/${it.src}" srcset="m/${it.src} 1200w, img/${it.src} 2000w" sizes="(max-width:640px) 100vw, 1400px"
+      width="${it.w}" height="${it.h}" loading="${i < 2 ? "eager" : "lazy"}" decoding="async" alt="" data-list="${list}" data-i="${i}">`;
 
-  $("grid-series").innerHTML = S.series.map(s => {
-    const c = s.items[(s.cover || 1) - 1];
-    return `<a class="card" href="#${s.id}-1"><div class="ph"><img loading="lazy" src="${TH + c.src}" alt="${s.title}"></div>
-      <div class="t">${s.title}</div><div class="m">${rango(s)} · ${s.mode} · ${s.items.length} fotografías</div><div class="i">${s.intro || ""}</div></a>`;
-  }).join("");
+  let current = null; // lista que se muestra en la página: "home" o id de serie
 
-  function go(h){ location.hash = h; }
-
-  function show(view){
-    document.querySelectorAll(".view").forEach(v => v.classList.toggle("on", v.id === view));
-    document.querySelectorAll("[data-nav]").forEach(a => a.classList.toggle("on",
-      (view === "info" && a.dataset.nav === "info") || (view === "series" && a.dataset.nav === "obra")));
+  function home() {
+    current = "home";
+    $("main").innerHTML = `<section class="feed">${S.selection.map((it, i) => {
+      const s = seriesOf(it.file);
+      const cap = s ? `<a href="#${s.id}">${s.title}</a> · ${pie(it)}` : pie(it);
+      return `<figure>${img(it, i, "home")}<figcaption>${cap}</figcaption></figure>`;
+    }).join("")}</section>`;
   }
 
-  function years(s){
-    const ys = [...new Set(s.items.map(i => i.year).filter(Boolean))].sort();
-    return ys.length > 1 ? ys[0] + "–" + ys[ys.length - 1] : ys[0] || "";
+  function series(s) {
+    current = s.id;
+    const k = S.series.indexOf(s), nx = S.series[(k + 1) % S.series.length];
+    $("main").innerHTML = `<section class="intro"><h1>${s.title}</h1><p>${s.intro}</p></section>
+      <section class="feed">${s.items.map((it, i) => `<figure>${img(it, i, s.id)}<figcaption>${pie(it)}</figcaption></figure>`).join("")}</section>
+      <section class="next"><span>Siguiente serie</span><a href="#${nx.id}">${nx.title}</a></section>`;
   }
 
-  function render(){
-    const it = cur.items[idx];
-    const img = $("photo");
-    img.classList.remove("fade"); void img.offsetWidth;
-    img.src = IMG + it.src; img.alt = cur.title + ", " + (idx + 1);
-    img.classList.add("fade");
-    $("s-title").textContent = cur.title;
-    $("s-year").textContent = pie(it);
-    $("s-count").textContent = (idx + 1) + " / " + cur.items.length;
-    document.title = cur.title + " " + (idx + 1) + " — " + S.name;
-    // precarga vecinas
-    [idx + 1, idx - 1].forEach(j => { const n = cur.items[(j + cur.items.length) % cur.items.length]; new Image().src = IMG + n.src; });
-  }
-
-  function step(d){
-    const n = cur.items.length, j = idx + d;
-    if (j >= n) { // al terminar, pasa a la siguiente serie
-      const k = S.series.indexOf(cur); const nx = S.series[(k + 1) % S.series.length]; go(nx.id + "-1"); return;
-    }
-    if (j < 0) { const k = S.series.indexOf(cur); const pv = S.series[(k - 1 + S.series.length) % S.series.length]; go(pv.id + "-" + pv.items.length); return; }
-    go(cur.id + "-" + (j + 1));
-  }
-
-  function openIndex(){
-    $("t-title").textContent = cur.title;
-    $("t-intro").textContent = (cur.intro || "") + " " + rango(cur) + ".";
-    $("tgrid").innerHTML = cur.items.map((it, i) =>
-      `<a href="#${cur.id}-${i + 1}"><img loading="lazy" src="${TH + it.src}" alt=""></a>`).join("");
-    $("thumbs").classList.add("on");
-  }
-  function closeIndex(){ $("thumbs").classList.remove("on"); }
-
-  function route(){
-    const h = decodeURIComponent(location.hash.slice(1));
-    closeIndex();
-    const m = h.match(/^([a-z]+)(?:-(\d+))?$/);
-    if (m && byId[m[1]]) {
-      cur = byId[m[1]];
-      idx = Math.min(Math.max((parseInt(m[2]) || 1) - 1, 0), cur.items.length - 1);
-      show("series"); render(); return;
-    }
-    if (h === "info") { show("info"); document.title = "Info — " + S.name; scrollTo(0,0); return; }
-    show("home"); document.title = S.name + " — Fotografía";
-    if (h === "obra") requestAnimationFrame(() => $("obra-anchor").scrollIntoView({behavior:"smooth"}));
-    else scrollTo(0,0);
-  }
-
-  $("hit-prev").onclick = $("b-prev").onclick = () => step(-1);
-  $("hit-next").onclick = $("b-next").onclick = () => step(1);
-  $("b-index").onclick = openIndex;
-  // Compartir: en el móvil abre el menú de compartir; en ordenador copia el enlace
-  $("b-share").onclick = async () => {
-    const url = location.href, title = cur ? cur.title + " — " + S.name : S.name;
-    try { if (navigator.share) { await navigator.share({ title, url }); return; } } catch (e) { return; }
-    try { await navigator.clipboard.writeText(url); $("b-share").textContent = "Enlace copiado"; }
-    catch (e) { $("b-share").textContent = url; }
-    setTimeout(() => $("b-share").textContent = "Compartir", 2500);
-  };
-  // Contacto (se rellena en data.js)
-  (() => {
+  function info() {
+    current = "info";
     const c = S.contact || {}, rows = [];
     if (c.email) rows.push(["Correo", `<a href="mailto:${c.email}">${c.email}</a>`]);
     if (c.instagram) rows.push(["Instagram", `<a href="https://instagram.com/${c.instagram}" target="_blank" rel="noopener">@${c.instagram}</a>`]);
     if (c.linkedin) rows.push(["LinkedIn", `<a href="${c.linkedin}" target="_blank" rel="noopener">Perfil</a>`]);
-    $("contact").innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
-  })();
-  $("t-close").onclick = closeIndex;
+    $("main").innerHTML = `<section class="info">
+      <p>Fotografía de calle en blanco y negro y en color, hecha con una Sony entre 2023 y 2026.</p>
+      <p>Vive y trabaja en Madrid.</p>
+      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></section>`;
+  }
 
+  // Visor
+  let lbList = [], lbIdx = 0, lbKey = "";
+  const listFor = key => key === "home" ? S.selection : byId[key].items;
+  function openLb(key, i) {
+    lbKey = key; lbList = listFor(key); lbIdx = i;
+    const it = lbList[i], s = key === "home" ? seriesOf(it.file) : byId[key];
+    $("lb-img").src = "img/" + it.src;
+    $("lb-title").textContent = key === "home" ? "Selección" : s.title;
+    $("lb-cap").textContent = (key === "home" && s ? s.title + " · " : "") + pie(it);
+    $("lb-count").textContent = (i + 1) + " / " + lbList.length;
+    $("lb").classList.add("on"); document.body.style.overflow = "hidden";
+    [i + 1, i - 1].forEach(j => { const n = lbList[(j + lbList.length) % lbList.length]; new Image().src = "img/" + n.src; });
+  }
+  function closeLb() { $("lb").classList.remove("on"); document.body.style.overflow = ""; }
+  const step = d => openLb(lbKey, (lbIdx + d + lbList.length) % lbList.length);
+  $("main").addEventListener("click", e => { const t = e.target.closest("img[data-list]"); if (t) openLb(t.dataset.list, +t.dataset.i); });
+  $("lb-prev").onclick = $("b-prev").onclick = () => step(-1);
+  $("lb-next").onclick = $("b-next").onclick = () => step(1);
+  $("lb-close").onclick = closeLb;
   addEventListener("keydown", e => {
-    if (!cur || !$("series").classList.contains("on")) return;
-    if (e.key === "ArrowRight") step(1);
-    else if (e.key === "ArrowLeft") step(-1);
-    else if (e.key === "Escape") $("thumbs").classList.contains("on") ? closeIndex() : go("obra");
+    if (!$("lb").classList.contains("on")) return;
+    if (e.key === "ArrowRight") step(1); else if (e.key === "ArrowLeft") step(-1); else if (e.key === "Escape") closeLb();
   });
-
   let x0 = null;
-  $("series").addEventListener("touchstart", e => x0 = e.touches[0].clientX, {passive:true});
-  $("series").addEventListener("touchend", e => {
-    if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null;
-    if (Math.abs(dx) > 45) step(dx < 0 ? 1 : -1);
-  });
+  $("lb").addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
+  $("lb").addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 45) step(dx < 0 ? 1 : -1); });
+  // Compartir: en el móvil abre el menú del sistema; en ordenador copia el enlace a la serie
+  $("b-share").onclick = async () => {
+    const base = location.href.split("#")[0], url = lbKey === "home" ? base : base + "#" + lbKey;
+    try { if (navigator.share) { await navigator.share({ title: S.name, url }); return; } } catch (e) { return; }
+    try { await navigator.clipboard.writeText(url); $("b-share").textContent = "Enlace copiado"; } catch (e) { $("b-share").textContent = url; }
+    setTimeout(() => $("b-share").textContent = "Compartir", 2500);
+  };
 
+  function route() {
+    closeLb();
+    const h = decodeURIComponent(location.hash.slice(1)).replace(/-\d+$/, "");
+    if (byId[h]) { series(byId[h]); document.title = byId[h].title + " — " + S.name; }
+    else if (h === "info") { info(); document.title = "Info — " + S.name; }
+    else { home(); document.title = S.name + " — Fotografía"; }
+    document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.id === h));
+    scrollTo(0, 0);
+  }
   addEventListener("hashchange", route);
   route();
 })();
