@@ -3,7 +3,7 @@ window.SITE = {
  "name": "Juan Domenech",
  "about": [
   "Juan Domenech vive en Madrid.",
-  "Su trabajo explora el encuentro entre lo efímero y lo permanente, y la forma en que la fotografía detiene lo primero y lo convierte en parte de lo segundo.",
+  "Su trabajo explora las relaciones entre lo efímero y lo permanente, entre el instante y aquello que parece permanecer fuera del tiempo. Encuentra en la calle formas, gestos y escenas cotidianas que, a través de la fotografía, adquieren una presencia distinta.",
   "Es graduado en Comunicación Audiovisual, trabaja en producción audiovisual y es autor de la novela «Fuente de Espinas»."
  ],
  "contact": {
