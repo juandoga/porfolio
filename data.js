@@ -2,8 +2,10 @@
 window.SITE = {
  "name": "Juan Domenech",
  "about": [
-  "Fotografía de calle en blanco y negro y en color, hecha con una Sony entre 2023 y 2026.",
-  "Vive y trabaja en Madrid."
+  "Juan Domenech es fotógrafo y vive en Madrid. Se graduó en Comunicación Audiovisual y lleva más de ocho años trabajando en producción audiovisual para cadenas de televisión y plataformas, un oficio que le ha enseñado a pensar en el encuadre, la luz y el momento de una escena.",
+  "Su trabajo personal se centra en la fotografía de calle. Fotografía en blanco y negro y en color: el blanco y negro para lo narrativo y el color como un medio de expresión en sí mismo. Sus imágenes parten de lo cotidiano, como gestos, sombras o figuras pequeñas frente al espacio que las rodea, en Madrid y en sus viajes por España, Portugal e Italia.",
+  "Su mirada se ha formado con la tradición documental y de calle, de Ramón Masats a Lee Friedlander o Ralph Gibson. Busca una forma propia de mirar, más allá de la imagen bonita.",
+  "Es también autor de la novela «Fuente de Espinas»."
  ],
  "contact": {
   "email": "juan.domenech11@gmail.com",
