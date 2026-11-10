@@ -3,8 +3,8 @@ window.SITE = {
  "name": "Juan Domenech",
  "about": [
   "Juan Domenech es fotógrafo y vive en Madrid. Fotografía la calle y los lugares por los que pasa, atento a las pequeñas escenas que suelen quedar al margen de la mirada.",
-  "En su trabajo, las personas adquieren a veces la quietud y la presencia de las esculturas. Le interesa ese instante en que el movimiento se detiene, la luz transforma las formas y lo cotidiano parece adquirir otra dimensión.",
-  "El tiempo y su fugacidad recorren sus fotografías. Hay en ellas una tensión entre lo pasajero y lo permanente, entre quienes habitan un lugar por un instante y aquello que permanece cuando ya se han ido. Sin solemnidad, también encuentra espacio para el humor, el azar y las relaciones inesperadas entre las cosas.",
+  "En su trabajo, las personas adquieren a veces la quietud y la presencia de las esculturas. Le interesa ese instante en que el movimiento se detiene, la luz transforma las formas y lo cotidiano parece tomar otra dimensión.",
+  "El tiempo y su fugacidad recorren sus fotografías. Hay en ellas una tensión entre lo pasajero y lo permanente, entre quienes habitan un lugar por un instante y aquello que sigue ahí cuando ya se han ido. Sin solemnidad, también encuentra espacio para el humor, el azar y las relaciones inesperadas entre las cosas.",
   "Trabaja en blanco y negro y en color, dos lenguajes con los que explora la forma, la luz y el espacio. Sus referentes se encuentran en la tradición documental y de calle, de Ramón Masats a Lee Friedlander y Ralph Gibson.",
   "Es graduado en Comunicación Audiovisual, ha trabajado durante más de ocho años en producción audiovisual para televisión y plataformas, y es autor de la novela «Fuente de Espinas»."
  ],
