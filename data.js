@@ -2,10 +2,11 @@
 window.SITE = {
  "name": "Juan Domenech",
  "about": [
-  "Juan Domenech es fotógrafo y vive en Madrid. Se graduó en Comunicación Audiovisual y lleva más de ocho años trabajando en producción audiovisual para cadenas de televisión y plataformas, un oficio que le ha enseñado a pensar en el encuadre, la luz y el momento de una escena.",
-  "Su trabajo personal se centra en la fotografía de calle. Fotografía en blanco y negro y en color: el blanco y negro para lo narrativo y el color como un medio de expresión en sí mismo. Sus imágenes parten de lo cotidiano, como gestos, sombras o figuras pequeñas frente al espacio que las rodea, en Madrid y en sus viajes por España, Portugal e Italia.",
-  "Su mirada se ha formado con la tradición documental y de calle, de Ramón Masats a Lee Friedlander o Ralph Gibson. Busca una forma propia de mirar, más allá de la imagen bonita.",
-  "Es también autor de la novela «Fuente de Espinas»."
+  "Juan Domenech es fotógrafo y vive en Madrid. Fotografía la calle y los lugares por los que pasa: escalinatas, patios, paseos marítimos, plazas, descampados. Le interesa la proporción entre las personas y los sitios que ocupan durante un momento.",
+  "En muchas de sus imágenes la figura humana es pequeña y está de paso, frente a cosas hechas para durar: un muro, una escalera de piedra, una escultura de hierro frente al mar, una fila de farolas. Otras veces la persona ya no está y queda su rastro: dos sillas vacías una frente a otra, una flor caída sobre una tapa de alcantarilla, una sombra en una pared roja. Lo que permanece y lo que pasa comparten el mismo encuadre.",
+  "No es una mirada triste. La luz ordena muchas de sus fotos: el sol bajo que recorta una figura en una esquina y que unos minutos después ya no está. Y a menudo hay humor en lo que encuentra, como una nube que parece salir de un tejado o unas farolas que se comportan como personajes. También sabe acercarse: en «El picnic», una comida familiar en el campo, la cámara se queda en las manos y los gestos.",
+  "Trabaja en blanco y negro y en color como dos lenguajes distintos. El blanco y negro le sirve para las formas, el contraste y la relación entre figura y espacio. En el color, los tonos forman parte del tema: el rojo de una barandilla, el azul del agua, el óxido del hierro. Sus referentes vienen de la tradición documental y de calle, de Ramón Masats a Lee Friedlander y Ralph Gibson.",
+  "Es graduado en Comunicación Audiovisual y ha trabajado más de ocho años en producción audiovisual para televisión y plataformas. Es autor de la novela «Fuente de Espinas»."
  ],
  "contact": {
   "email": "juan.domenech11@gmail.com",
