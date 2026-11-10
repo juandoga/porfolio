@@ -2,12 +2,11 @@
 window.SITE = {
  "name": "Juan Domenech",
  "about": [
-  "Juan Domenech es fotógrafo y vive en Madrid. Fotografía la calle y los lugares por los que pasa.",
-  "Su mirada trata a las personas como si fueran esculturas. Busca el momento en que alguien se queda quieto y la luz le da volumen: una mujer detenida al sol en una esquina, una pareja bajo un arco como en una hornacina, un hombre sentado en una escalinata como sobre un pedestal, unas manos que pelan una mandarina. A veces la quietud se ve por contraste, como en un pianista inmóvil mientras la gente pasa borrosa a su alrededor.",
-  "De ahí nace la idea del tiempo que recorre su trabajo. La calle está hecha de gente de paso, y la fotografía detiene ese paso y le da la presencia de algo que dura. Muchas de sus imágenes juegan con esa tensión entre lo que permanece y lo que desaparece: figuras pequeñas frente a muros, escaleras o el mar, o personas que ya no están y solo dejan un rastro, como una sombra en una pared roja o dos sillas vacías.",
-  "No es una mirada triste. Hay humor en lo que encuentra, y a veces el juego se invierte y son los objetos los que se comportan como personas, como las farolas y los postes de «Tendidos».",
-  "Trabaja en blanco y negro y en color como dos lenguajes distintos. El blanco y negro le sirve para las formas, el contraste y la relación entre figura y espacio. En el color, los tonos forman parte del tema: el rojo de una barandilla, el azul del agua, el óxido del hierro. Sus referentes vienen de la tradición documental y de calle, de Ramón Masats a Lee Friedlander y Ralph Gibson.",
-  "Es graduado en Comunicación Audiovisual y ha trabajado más de ocho años en producción audiovisual para televisión y plataformas. Es autor de la novela «Fuente de Espinas»."
+  "Juan Domenech es fotógrafo y vive en Madrid. Fotografía la calle y los lugares por los que pasa, atento a las pequeñas escenas que suelen quedar al margen de la mirada.",
+  "En su trabajo, las personas adquieren a veces la quietud y la presencia de las esculturas. Le interesa ese instante en que el movimiento se detiene, la luz transforma las formas y lo cotidiano parece adquirir otra dimensión.",
+  "El tiempo y su fugacidad recorren sus fotografías. Hay en ellas una tensión entre lo pasajero y lo permanente, entre quienes habitan un lugar por un instante y aquello que permanece cuando ya se han ido. Sin solemnidad, también encuentra espacio para el humor, el azar y las relaciones inesperadas entre las cosas.",
+  "Trabaja en blanco y negro y en color, dos lenguajes con los que explora la forma, la luz y el espacio. Sus referentes se encuentran en la tradición documental y de calle, de Ramón Masats a Lee Friedlander y Ralph Gibson.",
+  "Es graduado en Comunicación Audiovisual, ha trabajado durante más de ocho años en producción audiovisual para televisión y plataformas, y es autor de la novela «Fuente de Espinas»."
  ],
  "contact": {
   "email": "juan.domenech11@gmail.com",
