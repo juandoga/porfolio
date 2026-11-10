@@ -2,8 +2,8 @@
 window.SITE = {
  "name": "Juan Domenech",
  "about": [
-  "Juan Domenech vive en Madrid y fotografía la calle. Le interesan las personas en el momento en que se quedan quietas, lo que dura frente a lo que pasa y el humor que aparece sin buscarlo.",
-  "Trabaja en blanco y negro y en color.",
+  "Juan Domenech vive en Madrid y fotografía la calle.",
+  "Busca el instante en que alguien de paso se queda quieto como una estatua: el punto en el que lo efímero y lo que perdura se tocan, y la fotografía los guarda juntos.",
   "Es graduado en Comunicación Audiovisual, trabaja en producción audiovisual y es autor de la novela «Fuente de Espinas»."
  ],
  "contact": {
