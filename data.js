@@ -13,12 +13,12 @@ window.SITE = {
  },
  "selection": [
   {
-   "src": "seleccion-01.jpg",
-   "w": 2000,
-   "h": 1333,
-   "date": "2024-01-20",
+   "src": "seleccion-33.jpg",
+   "w": 1600,
+   "h": 2000,
+   "date": "2026-10-08",
    "place": "",
-   "file": "DSC03465"
+   "file": "DSC07640"
   },
   {
    "src": "seleccion-02.jpg",
@@ -269,12 +269,12 @@ window.SITE = {
    "file": "DSC07634"
   },
   {
-   "src": "seleccion-33.jpg",
-   "w": 1600,
-   "h": 2000,
-   "date": "2026-10-08",
+   "src": "seleccion-01.jpg",
+   "w": 2000,
+   "h": 1333,
+   "date": "2024-01-20",
    "place": "",
-   "file": "DSC07640"
+   "file": "DSC03465"
   },
   {
    "src": "seleccion-35.jpg",
