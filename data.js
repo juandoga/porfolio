@@ -13,6 +13,14 @@ window.SITE = {
  },
  "selection": [
   {
+   "src": "seleccion-portal.jpg",
+   "w": 2000,
+   "h": 1125,
+   "date": "2024-09-28",
+   "place": "",
+   "file": "DSC06067"
+  },
+  {
    "src": "seleccion-33.jpg",
    "w": 1600,
    "h": 2000,
