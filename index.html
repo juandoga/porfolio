@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Juan Domenech — Fotografía</title>
 <meta name="description" content="Fotografía de calle en blanco y negro y en color.">
-<meta name="theme-color" content="#f3f2ee">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -21,82 +21,77 @@
 <meta name="twitter:title" content="Juan Domenech — Fotografía">
 <meta name="twitter:description" content="Fotografía de calle en blanco y negro y en color.">
 <meta name="twitter:image" content="https://juandoga.github.io/porfolio/og.jpg">
-<link rel="preload" href="fonts/archivo-black-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/archivo-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face{font-family:"Archivo Black";src:url(fonts/archivo-black-latin-400-normal.woff2) format("woff2");font-display:swap}
+  @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-500-normal.woff2) format("woff2");font-weight:500;font-display:swap}
-  @font-face{font-family:"Archivo";src:url(fonts/archivo-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
-
-  :root{--bg:#f3f2ee;--ink:#1b1b1a;--mute:#8d8b85;--pad:clamp(20px,3.2vw,48px);
-        --display:"Archivo Black","Arial Black",Impact,sans-serif;--sans:"Archivo",system-ui,-apple-system,Helvetica,Arial,sans-serif}
+  :root{--bg:#fff;--ink:#111;--mute:#8a8a8a;--pad:clamp(20px,3.4vw,48px);--gap:6px}
   *{box-sizing:border-box;margin:0;padding:0}
   html{background:var(--bg);color:var(--ink)}
-  body{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
-  body.full{height:100vh;height:100dvh;overflow:hidden}
+  body{font-family:"Archivo",system-ui,-apple-system,Helvetica,Arial,sans-serif;font-weight:400;font-size:13px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh}
   a{color:inherit;text-decoration:none}
   img{display:block;user-select:none;-webkit-user-drag:none}
   button{all:unset;cursor:pointer}
-  main{flex:1;min-height:0;display:flex;flex-direction:column}
 
-  header{display:flex;justify-content:space-between;align-items:baseline;gap:24px;padding:var(--pad)}
-  .name{font-family:var(--display);font-size:clamp(22px,2.4vw,32px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  nav{display:flex;gap:clamp(14px,2vw,28px)}
-  nav a{font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute)}
-  nav a:hover,nav a.on{color:var(--ink)}
+  header{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:calc(var(--pad)*.8) var(--pad)}
+  .name{font-size:17px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+  nav{display:flex;gap:clamp(16px,2.4vw,34px)}
+  nav a{font-size:13px;letter-spacing:.04em;opacity:.65}
+  nav a:hover,nav a.on{opacity:1}
+  #burger{display:none;width:26px;height:14px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+  body.hero header{color:#fff}
+  main{padding-top:calc(var(--pad)*1.6 + 30px)}
+  body.hero main{padding:0}
 
-  /* Carrusel: una foto cada vez, cambia sola o con el dedo, las flechas o un clic */
-  .car{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 var(--pad)}
-  .stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
-  .stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;transition:opacity .45s ease}
-  .stage img.out{opacity:0}
-  .stage .hit{position:absolute;top:0;bottom:0;width:50%;z-index:2}
-  .stage .prev{left:0;cursor:w-resize}.stage .next{right:0;cursor:e-resize}
-  .ctl{display:flex;justify-content:center;align-items:center;gap:18px;padding:14px 0 0;color:var(--mute);font-size:12px;font-variant-numeric:tabular-nums}
-  .ctl button{font-size:18px;line-height:1;padding:4px 8px;color:var(--mute)}
-  .ctl button:hover{color:var(--ink)}
-  .cap{min-height:18px;text-align:center;color:var(--mute);font-size:12px;padding-top:4px}
+  /* Portada: una foto a pantalla completa que cambia sola */
+  .hero-wrap{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#111}
+  .hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+  .hero-wrap img.on{opacity:1}
+  .hero-wrap::after{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(rgba(0,0,0,.35),transparent);pointer-events:none}
 
-  .sinfo{padding:0 var(--pad) clamp(14px,2.5vh,28px);display:flex;gap:8px 28px;align-items:baseline;flex-wrap:wrap}
-  .sinfo h1{font-family:var(--display);font-weight:400;font-size:clamp(22px,3vw,40px);line-height:1;letter-spacing:-.02em;text-transform:uppercase}
-  .sinfo p{color:var(--mute);font-size:14px;max-width:60ch}
-  .sinfo a{color:var(--mute);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em}
-  .sinfo a:hover{color:var(--ink)}
+  /* Galería en columnas, sin pies de foto */
+  .grid{display:flex;gap:var(--gap);padding:0 var(--gap) var(--gap)}
+  .grid .col{flex:1;min-width:0;display:flex;flex-direction:column;gap:var(--gap)}
+  .grid img{width:100%;height:auto;background:#f1f1f1;cursor:zoom-in;transition:opacity .25s}
+  .grid img:hover{opacity:.86}
 
-  /* Proyectos */
-  .projects{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:clamp(28px,4vw,56px);padding:clamp(16px,4vh,48px) var(--pad) 0}
-  .projects a{display:block}
-  .projects .cov{aspect-ratio:4/3;background:#e7e5df center/cover no-repeat;transition:opacity .2s}
-  .projects a:hover .cov{opacity:.85}
-  .projects h2{font-family:var(--display);font-weight:400;font-size:clamp(20px,2vw,26px);letter-spacing:-.02em;text-transform:uppercase;margin-top:14px;line-height:1.05}
-  .projects p{color:var(--mute);font-size:12px;margin-top:4px}
-
-  .info{max-width:620px;width:100%;margin:0 auto;padding:clamp(24px,10vh,120px) var(--pad) 0}
-  .info p{font-size:clamp(18px,1.8vw,22px);line-height:1.5;margin-bottom:1em}
-  .info dl{margin-top:48px;display:grid;grid-template-columns:110px 1fr;gap:10px 16px;font-size:14px}
+  .info{max-width:640px;margin:0 auto;padding:clamp(24px,9vh,110px) var(--pad) 80px}
+  .info p{font-size:clamp(15px,1.4vw,17px);line-height:1.7;margin-bottom:1.1em}
+  .info dl{margin-top:44px;display:grid;grid-template-columns:110px 1fr;gap:8px 16px;font-size:14px}
   .info dt{color:var(--mute)}
   .info dd a{border-bottom:1px solid currentColor}
 
-  footer{display:flex;justify-content:space-between;align-items:center;padding:clamp(16px,3vh,28px) var(--pad);color:var(--mute);font-size:12px}
-  body:not(.full) footer{margin-top:clamp(60px,12vh,140px)}
-  footer .ig{display:block;width:22px;height:22px;color:var(--ink)}
-  footer .ig:hover{opacity:.6}
+  footer{display:flex;justify-content:space-between;align-items:center;padding:28px var(--pad);color:var(--mute);font-size:12px}
+  body.hero footer{display:none}
+  footer .ig{display:block;width:20px;height:20px;color:var(--ink)}
 
-  @media (max-width:640px){
-    .car{padding:0}
-    .name{font-size:20px;white-space:nowrap}
-    nav{gap:14px}
-    .ctl,.cap{padding-left:var(--pad);padding-right:var(--pad)}
+  #lb{position:fixed;inset:0;z-index:20;background:#fff;display:none;align-items:center;justify-content:center}
+  #lb.on{display:flex}
+  #lb img{max-width:calc(100vw - 2*var(--pad));max-height:calc(100dvh - 110px);object-fit:contain}
+  #lb .hit{position:absolute;top:60px;bottom:50px;width:50%}
+  #lb .prev{left:0;cursor:w-resize}#lb .next{right:0;cursor:e-resize}
+  #lb .x{position:absolute;top:18px;right:var(--pad);font-size:13px;letter-spacing:.04em;padding:8px 0;z-index:2}
+  #lb .n{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:var(--mute);font-size:12px;font-variant-numeric:tabular-nums}
+
+  @media (max-width:700px){
+    #burger{display:block}
+    nav{display:none;position:fixed;inset:0;z-index:6;background:#fff;color:#111;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+    nav a{font-size:20px;opacity:1}
+    body.menu nav{display:flex}
+    body.menu #burger{position:relative;z-index:7;color:#111}
+    #lb img{max-width:100vw}
   }
-  @media (prefers-reduced-motion:reduce){.stage img{transition:none}}
 </style>
 </head>
 <body>
 <header>
   <a class="name" href="#" id="site-name"></a>
-  <nav><a href="#proyectos" data-id="proyectos">Proyectos</a><a href="#info" data-id="info">Info</a></nav>
+  <nav id="nav"></nav>
+  <button id="burger" aria-label="Menú"></button>
 </header>
 <main id="main"></main>
 <footer><span id="foot"></span><span id="ig"></span></footer>
+<div id="lb"><button class="x" id="lb-x">Cerrar</button><a class="hit prev" id="lb-p"></a><a class="hit next" id="lb-n"></a><img id="lb-img" alt=""><div class="n" id="lb-c"></div></div>
 
 <script src="data.js"></script>
 <script>
@@ -104,83 +99,72 @@
   const S = window.SITE, $ = id => document.getElementById(id);
   const byId = Object.fromEntries(S.series.map(s => [s.id, s]));
   const esc = t => String(t ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const DELAY = 6000; // milisegundos entre foto y foto
+  const DELAY = 6000;
+  const big = () => innerWidth * (devicePixelRatio || 1) > 1300;
 
   $("site-name").textContent = S.name;
   $("foot").textContent = S.name + " © " + new Date().getFullYear();
+  $("nav").innerHTML = S.series.filter(s => s.items.length).map(s => `<a href="#${esc(s.id)}" data-id="${esc(s.id)}">${esc(s.title)}</a>`).join("") + `<a href="#info" data-id="info">Info</a>`;
   const ig = (S.contact || {}).instagram;
-  if (ig) $("ig").innerHTML = `<a class="ig" href="https://instagram.com/${esc(ig)}" target="_blank" rel="noopener" aria-label="Instagram">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="22" height="22"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg></a>`;
+  if (ig) $("ig").innerHTML = `<a class="ig" href="https://instagram.com/${esc(ig)}" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg></a>`;
+  $("burger").onclick = () => document.body.classList.toggle("menu");
 
-  // ---------- Carrusel ----------
-  const pick = it => (innerWidth * (devicePixelRatio || 1) > 1300 ? "img/" : "m/") + it.src;
-  let list = [], idx = 0, timer = null;
-  function carousel(items) {
-    list = items; idx = 0;
-    return `<section class="car">
-      <div class="stage" id="stage"><img id="ph" alt=""><a class="hit prev" id="h-prev" aria-label="Anterior"></a><a class="hit next" id="h-next" aria-label="Siguiente"></a></div>
-      <div class="ctl"><button id="b-prev" aria-label="Anterior">‹</button><span id="count"></span><button id="b-next" aria-label="Siguiente">›</button></div>
-      <div class="cap" id="cap"></div></section>`;
-  }
-  function show(i, fade = true) {
-    if (!list.length) return;
-    idx = (i + list.length) % list.length;
-    const it = list[idx], im = $("ph"), url = pick(it);
-    const put = () => { im.src = url; im.classList.remove("out"); };
-    if (fade && im.getAttribute("src")) { im.classList.add("out"); const pre = new Image(); pre.src = url; setTimeout(() => (pre.complete ? put() : (pre.onload = pre.onerror = put)), 450); }
-    else put();
-    $("count").textContent = (idx + 1) + " / " + list.length;
-    $("cap").textContent = it.place || "";
-    new Image().src = pick(list[(idx + 1) % list.length]);
-    restart();
-  }
-  function restart() { clearTimeout(timer); if (list.length > 1 && !document.hidden) timer = setTimeout(() => show(idx + 1), DELAY); }
-  function wire() {
-    $("h-prev").onclick = $("b-prev").onclick = () => show(idx - 1);
-    $("h-next").onclick = $("b-next").onclick = () => show(idx + 1);
-    let x0 = null;
-    $("stage").addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
-    $("stage").addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) show(idx + (dx < 0 ? 1 : -1)); }, { passive: true });
-    show(0, false);
-  }
-  addEventListener("keydown", e => { if (!list.length) return; if (e.key === "ArrowRight") show(idx + 1); else if (e.key === "ArrowLeft") show(idx - 1); });
-  document.addEventListener("visibilitychange", restart);
+  let timer = null, list = [], idx = 0;
 
-  // ---------- Páginas ----------
   function home() {
-    document.body.classList.add("full");
-    $("main").innerHTML = carousel(S.selection); wire();
+    document.body.classList.add("hero");
+    const items = S.selection.length ? S.selection : S.series.flatMap(s => s.items).slice(0, 5);
+    $("main").innerHTML = `<div class="hero-wrap">${items.map((it, i) => `<img ${i ? "data-" : ""}src="${big() ? "img/" : "m/"}${esc(it.src)}" alt="" class="${i ? "" : "on"}">`).join("")}</div>`;
+    const ims = [...$("main").querySelectorAll("img")]; let k = 0;
+    if (ims.length > 1) timer = setInterval(() => {
+      ims[k].classList.remove("on"); k = (k + 1) % ims.length;
+      if (ims[k].dataset.src) { ims[k].src = ims[k].dataset.src; delete ims[k].dataset.src; }
+      ims[k].classList.add("on");
+      const nx = ims[(k + 1) % ims.length]; if (nx.dataset.src) { nx.src = nx.dataset.src; delete nx.dataset.src; }
+    }, DELAY);
   }
-  function series(s) {
-    document.body.classList.add("full");
-    $("main").innerHTML = `<section class="sinfo"><h1>${esc(s.title)}</h1>${s.intro ? `<p>${esc(s.intro)}</p>` : ""}<a href="#proyectos">← Proyectos</a></section>` + carousel(s.items);
-    wire();
+
+  function gallery(s) {
+    list = s.items;
+    const n = innerWidth < 700 ? 2 : innerWidth < 1500 ? 3 : 4;
+    const cols = Array.from({ length: n }, () => ({ h: 0, html: "" }));
+    s.items.forEach((it, i) => {
+      const c = cols.reduce((a, b) => (b.h < a.h ? b : a));
+      c.h += it.h / it.w;
+      c.html += `<img src="${n > 2 || big() ? "m/" : "thumb/"}${esc(it.src)}" width="${it.w}" height="${it.h}" loading="${i < 8 ? "eager" : "lazy"}" alt="" data-i="${i}">`;
+    });
+    $("main").innerHTML = `<section class="grid">${cols.map(c => `<div class="col">${c.html}</div>`).join("")}</section>`;
+    $("main").querySelectorAll("img").forEach(im => im.onclick = () => openLb(+im.dataset.i));
   }
-  function projects() {
-    $("main").innerHTML = `<section class="projects">${S.series.filter(s => s.items.length).map(s =>
-      `<a href="#${esc(s.id)}"><div class="cov" style="background-image:url('m/${esc(s.items[0].src)}')"></div><h2>${esc(s.title)}</h2><p>${s.items.length} fotografías</p></a>`).join("")}</section>`;
-  }
+
   function info() {
     const c = S.contact || {}, rows = [];
     if (c.email) rows.push(["Correo", `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>`]);
     if (c.instagram) rows.push(["Instagram", `<a href="https://instagram.com/${esc(c.instagram)}" target="_blank" rel="noopener">@${esc(c.instagram)}</a>`]);
     if (c.linkedin) rows.push(["LinkedIn", `<a href="${esc(c.linkedin)}" target="_blank" rel="noopener">Perfil</a>`]);
-    $("main").innerHTML = `<section class="info">${(S.about || []).map(p => `<p>${esc(p)}</p>`).join("")}
-      <dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></section>`;
+    $("main").innerHTML = `<section class="info">${(S.about || []).map(p => `<p>${esc(p)}</p>`).join("")}<dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></section>`;
   }
 
+  function openLb(i) { idx = (i + list.length) % list.length; $("lb-img").src = (big() ? "img/" : "m/") + list[idx].src; $("lb-c").textContent = (idx + 1) + " / " + list.length; $("lb").classList.add("on"); new Image().src = (big() ? "img/" : "m/") + list[(idx + 1) % list.length].src; }
+  const closeLb = () => $("lb").classList.remove("on");
+  $("lb-x").onclick = closeLb; $("lb-p").onclick = () => openLb(idx - 1); $("lb-n").onclick = () => openLb(idx + 1);
+  addEventListener("keydown", e => { if (!$("lb").classList.contains("on")) return; if (e.key === "Escape") closeLb(); if (e.key === "ArrowRight") openLb(idx + 1); if (e.key === "ArrowLeft") openLb(idx - 1); });
+  let x0 = null;
+  $("lb").addEventListener("touchstart", e => x0 = e.touches[0].clientX, { passive: true });
+  $("lb").addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 40) openLb(idx + (dx < 0 ? 1 : -1)); }, { passive: true });
+
+  let lastW = innerWidth;
   function route() {
-    clearTimeout(timer); list = []; document.body.classList.remove("full");
+    clearInterval(timer); closeLb(); document.body.classList.remove("hero", "menu");
     const h = decodeURIComponent(location.hash.slice(1));
-    let nav = h;
-    if (byId[h]) { series(byId[h]); document.title = byId[h].title + " — " + S.name; nav = "proyectos"; }
-    else if (h === "proyectos") { projects(); document.title = "Proyectos — " + S.name; }
+    if (byId[h]) { gallery(byId[h]); document.title = byId[h].title + " — " + S.name; }
     else if (h === "info") { info(); document.title = "Info — " + S.name; }
     else { home(); document.title = S.name + " — Fotografía"; }
-    document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.id === nav));
+    document.querySelectorAll("nav a").forEach(a => a.classList.toggle("on", a.dataset.id === h));
     scrollTo(0, 0);
   }
   addEventListener("hashchange", route);
+  addEventListener("resize", () => { if (Math.abs(innerWidth - lastW) > 80) { lastW = innerWidth; if (byId[location.hash.slice(1)]) route(); } });
   route();
 })();
 </script>
