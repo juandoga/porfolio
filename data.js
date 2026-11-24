@@ -1,10 +1,7 @@
 // Datos del porfolio. Lo más cómodo es editarlos desde la página de gestión: /porfolio/admin/
 window.SITE = {
  "name": "Juan Domenech",
- "about": [
-  "Juan Domenech vive en Madrid.",
-  "Es graduado en Comunicación Audiovisual, trabaja en producción audiovisual y es autor de la novela «Fuente de Espinas»."
- ],
+ "about": [],
  "contact": {
   "email": "juan.domenech11@gmail.com",
   "instagram": "jota.domenech",
