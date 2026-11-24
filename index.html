@@ -39,15 +39,13 @@
   nav a{font-size:13px;letter-spacing:.04em;opacity:.65}
   nav a:hover,nav a.on{opacity:1}
   #burger{display:none;width:26px;height:14px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
-  body.hero header{color:#fff}
   main{padding-top:calc(var(--pad)*1.6 + 30px)}
   body.hero main{padding:0}
 
   /* Portada: una foto a pantalla completa que cambia sola */
-  .hero-wrap{position:relative;height:100vh;height:100dvh;overflow:hidden;background:#111}
-  .hero-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
+  .hero-wrap{position:relative;height:100vh;height:100dvh;overflow:hidden;background:var(--bg)}
+  .hero-wrap img{position:absolute;top:calc(var(--pad)*1.6 + 30px);bottom:var(--pad);left:var(--pad);right:var(--pad);width:calc(100% - 2*var(--pad));height:calc(100% - var(--pad)*2.6 - 30px);object-fit:contain;opacity:0;transition:opacity 1.4s ease}
   .hero-wrap img.on{opacity:1}
-  .hero-wrap::after{content:"";position:absolute;inset:0 0 auto 0;height:160px;background:linear-gradient(rgba(0,0,0,.35),transparent);pointer-events:none}
 
   /* Galería en columnas, sin pies de foto */
   .grid{display:flex;gap:var(--gap);padding:0 var(--gap) var(--gap)}
