@@ -21,6 +21,22 @@ window.SITE = {
    "file": "DSC06067"
   },
   {
+   "src": "f-dsc08852.jpg",
+   "w": 2000,
+   "h": 1600,
+   "date": "",
+   "place": "",
+   "file": "DSC08852"
+  },
+  {
+   "src": "f-dsc08802.jpg",
+   "w": 2000,
+   "h": 1600,
+   "date": "",
+   "place": "",
+   "file": "DSC08802"
+  },
+  {
    "src": "seleccion-17.jpg",
    "w": 2000,
    "h": 1125,
@@ -69,6 +85,14 @@ window.SITE = {
      "file": "DSC08177"
     },
     {
+     "src": "f-dsc08852.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08852"
+    },
+    {
      "src": "seleccion-06.jpg",
      "w": 2000,
      "h": 1125,
@@ -93,6 +117,14 @@ window.SITE = {
      "file": "DSC04458"
     },
     {
+     "src": "f-dsc08726.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08726"
+    },
+    {
      "src": "seleccion-08.jpg",
      "w": 1125,
      "h": 2000,
@@ -115,6 +147,14 @@ window.SITE = {
      "date": "",
      "place": "",
      "file": "DSC04993"
+    },
+    {
+     "src": "f-dsc08880.jpg",
+     "w": 2000,
+     "h": 1125,
+     "date": "",
+     "place": "",
+     "file": "DSC08880"
     },
     {
      "src": "seleccion-09.jpg",
@@ -163,6 +203,14 @@ window.SITE = {
      "date": "",
      "place": "",
      "file": "DSC04909"
+    },
+    {
+     "src": "f-dsc08655.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08655"
     },
     {
      "src": "seleccion-28.jpg",
@@ -229,6 +277,14 @@ window.SITE = {
      "file": "DSC06067"
     },
     {
+     "src": "f-dsc08802.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08802"
+    },
+    {
      "src": "seleccion-07.jpg",
      "w": 1125,
      "h": 2000,
@@ -269,6 +325,14 @@ window.SITE = {
      "file": "DSC07154"
     },
     {
+     "src": "f-dsc08833.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08833"
+    },
+    {
      "src": "seleccion-12.jpg",
      "w": 2000,
      "h": 1600,
@@ -301,6 +365,14 @@ window.SITE = {
      "file": "DSC08174"
     },
     {
+     "src": "f-dsc08748.jpg",
+     "w": 1600,
+     "h": 2000,
+     "date": "",
+     "place": "",
+     "file": "DSC08748"
+    },
+    {
      "src": "seleccion-25.jpg",
      "w": 2000,
      "h": 1125,
@@ -315,6 +387,14 @@ window.SITE = {
      "date": "",
      "place": "",
      "file": "DSC06099"
+    },
+    {
+     "src": "f-dsc08828.jpg",
+     "w": 1600,
+     "h": 2000,
+     "date": "",
+     "place": "",
+     "file": "DSC08828"
     },
     {
      "src": "seleccion-19.jpg",
@@ -333,20 +413,20 @@ window.SITE = {
      "file": "DSC03721"
     },
     {
+     "src": "f-dsc08750.jpg",
+     "w": 2000,
+     "h": 1125,
+     "date": "",
+     "place": "",
+     "file": "DSC08750"
+    },
+    {
      "src": "seleccion-23.jpg",
      "w": 2000,
      "h": 2000,
      "date": "",
      "place": "",
      "file": "DSC06466"
-    },
-    {
-     "src": "f-dsc2159.jpg",
-     "w": 1333,
-     "h": 2000,
-     "date": "",
-     "place": "",
-     "file": "_DSC2159"
     },
     {
      "src": "picnic-09.jpg",
@@ -365,20 +445,20 @@ window.SITE = {
      "file": "DSC05002"
     },
     {
+     "src": "f-dsc08707.jpg",
+     "w": 1125,
+     "h": 2000,
+     "date": "",
+     "place": "",
+     "file": "DSC08707"
+    },
+    {
      "src": "f-dsc2851.jpg",
      "w": 2000,
      "h": 1333,
      "date": "",
      "place": "",
      "file": "_DSC2851"
-    },
-    {
-     "src": "seleccion-31.jpg",
-     "w": 1125,
-     "h": 2000,
-     "date": "",
-     "place": "",
-     "file": "DSC08199"
     },
     {
      "src": "f-dsc06143.jpg",
@@ -397,6 +477,14 @@ window.SITE = {
      "file": "DSC07634"
     },
     {
+     "src": "f-dsc08876.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08876"
+    },
+    {
      "src": "f-dsc1253-2.jpg",
      "w": 2000,
      "h": 1500,
@@ -411,6 +499,14 @@ window.SITE = {
      "date": "",
      "place": "",
      "file": "DSC08414"
+    },
+    {
+     "src": "f-dsc08520.jpg",
+     "w": 2000,
+     "h": 1600,
+     "date": "",
+     "place": "",
+     "file": "DSC08520"
     },
     {
      "src": "seleccion-38.jpg",
