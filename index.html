@@ -114,7 +114,8 @@
 
   function home() {
     document.body.classList.add("hero");
-    const items = S.selection.length ? S.selection : S.series.flatMap(s => s.items).slice(0, 5);
+    const base = S.selection.length ? S.selection : S.series.flatMap(s => s.items).slice(0, 5);
+    const items = [...base].sort(() => Math.random() - 0.5); // orden distinto en cada visita
     $("main").innerHTML = `<div class="hero-wrap">${items.map((it, i) => `<img ${i ? "data-" : ""}src="${big() ? "img/" : "m/"}${esc(it.src)}" alt="" class="${i ? "" : "on"}">`).join("")}</div>`;
     const ims = [...$("main").querySelectorAll("img")]; let k = 0;
     if (ims.length > 1) timer = setInterval(() => {
